@@ -1,0 +1,59 @@
+.header {
+  background-color: #d9d9d9;
+  height: 100px;
+  position: relative;
+  width: 100wh;
+}
+
+.header .logo {
+  height: 56px;
+  left: 108px;
+  position: absolute;
+  top: 22px;
+  width: 180px;
+}
+
+.header .mangrove-digital {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 800;
+  left: 61px;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: absolute;
+  top: 0;
+}
+
+.header .ellipse {
+  background-color: #6d6d6d;
+  border-radius: 25px;
+  height: 50px;
+  left: 0;
+  position: absolute;
+  top: 3px;
+  width: 50px;
+}
+
+.header .div {
+  align-items: center;
+  display: inline-flex;
+  gap: 45px;
+  justify-content: flex-end;
+  left: 845px;
+  position: absolute;
+  top: 36px;
+}
+
+.header .text-wrapper {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}

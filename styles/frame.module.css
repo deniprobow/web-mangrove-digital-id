@@ -1,0 +1,43 @@
+.frame {
+    align-items: flex-start;
+    background-color: #c7c7c7;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 45px;
+    position: relative;
+    width: 416px;
+  }
+  
+  .frame .ecosystem {
+    height: 120px;
+    object-fit: cover;
+    position: relative;
+    width: 120px;
+  }
+  
+  .frame .the-ecosystem-of {
+    color: #000000;
+    font-family: "Manrope", Helvetica;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 42px;
+    margin-right: -10px;
+    position: relative;
+    width: 336px;
+  }
+  
+  .frame .much-like-the {
+    color: #000000;
+    font-family: "Manrope", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-right: -10px;
+    position: relative;
+    width: 336px;
+  }
+  
