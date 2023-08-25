@@ -1,0 +1,22 @@
+.card-service {
+    border-radius: 25px;
+    background: #4A55A2;
+    display: flex;
+    padding: 50px 45px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    color: #fff;
+
+    > h3 {
+        margin-bottom: 0;
+    }
+
+    > img {
+        width: 120px;
+    }
+
+    > p {
+        margin-bottom: 0;
+    }
+}

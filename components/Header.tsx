@@ -1,48 +1,41 @@
 import Link from "next/link";
-import "../styles/header.module.css";
+import { useState, useEffect } from 'react'
 
-interface HeaderProps{
-    className:string,
-    mangroveDigitalClassName:string,
-    ellipseClassName:string,
-    divClassName:string,
-    divClassNameOverride:string,
-    divClassName1:string,
-    divClassName2:string,
-    divClassName3:string,
-    divClassName4:string,
+export const Header = () => {
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        // Clean up the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    return (
+        <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+            <div className="container">
+                <Link className="header--logo" href="/">Mangrove Digital</Link>
+                <nav className="header--nav">
+                    <ul>
+                        <li><Link href="/">Home</Link></li>
+                        <li><Link href="/">About Us</Link></li>
+                        <li><Link href="/">Plantation</Link></li>
+                        <li><Link href="/">Mapping</Link></li>
+                        <li><Link href="/">Gallery</Link></li>
+                        <li><Link href="/">Contact</Link></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    )
 }
-
-export const Header = ({
-  className,
-  mangroveDigitalClassName,
-  ellipseClassName,
-  divClassName,
-  divClassNameOverride,
-  divClassName1,
-  divClassName2,
-  divClassName3,
-  divClassName4,
-  ...props}:HeaderProps) => {
-  return (
-    <div className={`header ${className}`}>
-      <div className="logo">
-        <div className={`mangrove-digital ${mangroveDigitalClassName}`}>
-          Mangrove
-          <br />
-          DIgital
-        </div>
-        <div className={`ellipse ${ellipseClassName}`} />
-      </div>
-      <div className="div">
-        <Link href={""} className={`text-wrapper ${divClassName}`}>Home</Link>
-        <Link href={""} className={`text-wrapper ${divClassNameOverride}`}>About Us</Link>
-        <Link href={""} className={`text-wrapper ${divClassName1}`}>Products</Link>
-        <Link href={""} className={`text-wrapper ${divClassName1}`}>Penanaman</Link>
-        <Link href={""} className={`text-wrapper ${divClassName2}`}>Blogs</Link>
-        <Link href={""} className={`text-wrapper ${divClassName3}`}>Gallery</Link>
-        <Link href={""} className={`text-wrapper ${divClassName4}`}>Contact</Link>
-      </div>
-    </div>
-  );
-};

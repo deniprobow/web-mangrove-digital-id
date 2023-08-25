@@ -1,0 +1,35 @@
+footer.footer {
+    padding: 120px 0;
+    background-color: $primary-color;
+    color: #fff;
+    padding-bottom: 0;
+
+    ul {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+
+        > li {
+            margin-bottom: 10px;
+
+            > a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.footer--heading {
+    color: $accent-color;
+}
+
+.container__copyright {
+    margin-top: 100px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(#fff, .24);
+}

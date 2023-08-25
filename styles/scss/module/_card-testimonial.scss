@@ -1,0 +1,26 @@
+.card-testimonial {
+    background-color: $primary-color;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.card-testimonial--bio {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    > .bio--frame-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        > img {
+            width: 100%;
+        }
+    }
+}
