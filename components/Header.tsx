@@ -2,7 +2,12 @@ import Link from "next/link";
 import { useState, useEffect } from 'react'
 
 export const Header = () => {
-    const [scrolled, setScrolled] = useState(false)
+    const [isScrolled, setScrolled] = useState(false)
+
+    const toogleNavMobile = () => {
+        const elBody = document.querySelector('body')
+        elBody?.classList.toggle('toggle-nav-mobile')
+    } 
 
     useEffect(() => {
         const handleScroll = () => {
@@ -11,7 +16,7 @@ export const Header = () => {
             } else {
                 setScrolled(false);
             }
-        }
+        }   
 
         window.addEventListener('scroll', handleScroll)
 
@@ -22,10 +27,11 @@ export const Header = () => {
     }, [])
 
     return (
-        <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <header onClick={toogleNavMobile} className={`header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
                 <Link className="header--logo" href="/">Mangrove Digital</Link>
                 <nav className="header--nav">
+                    <Link href="#">Mangrove Digital</Link>
                     <ul>
                         <li><Link href="/">Home</Link></li>
                         <li><Link href="/">About Us</Link></li>
@@ -35,6 +41,11 @@ export const Header = () => {
                         <li><Link href="/">Contact</Link></li>
                     </ul>
                 </nav>
+                <div className="header--toggle-nav-mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </header>
     )
