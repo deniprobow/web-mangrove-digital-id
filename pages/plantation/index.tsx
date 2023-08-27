@@ -4,6 +4,45 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { CardProduct } from "@/components/CardProduct"
 
 export default function Plantation() {
+    type dataType = {
+        id : number,
+        label : string,
+        company : string,
+        area  : string,
+        image : string,
+    }
+
+    const datas = [
+        {
+            id : 1,
+            label : "30.000 Pohon",
+            company : "PT. Alpha Company",
+            area  : "Kec. Paloh Kab.sambas",
+            image : "/img/index/bg-hero-banner.webp"
+        },
+        {
+            id : 2,
+            label : "50.000 Pohon",
+            company : "PT. Adiyaksa Company",
+            area  : "Kec. Sui Pinyuh Kab.Mempawah",
+            image : "/img/index/bg-hero-banner.webp"
+        },
+        {
+            id : 3,
+            label : "60.000 Pohon",
+            company : "PT. Google Indonesia",
+            area  : "Kec. Sui Kupah Kab.KubuRaya",
+            image : "/img/index/bg-hero-banner.webp"
+        },
+        {
+            id : 4,
+            label : "40.000 Pohon",
+            company : "PT. AWS Indonesia",
+            area  : "Kec. Sui Kupah Kab.KubuRaya",
+            image : "/img/index/bg-hero-banner.webp"
+        }
+    ]
+
     return (
         <>
             <div className="breadcrumb">
@@ -29,42 +68,22 @@ export default function Plantation() {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="mb-4 col-sm-6 col-lg-4 col-xl-3">
-                            <CardProduct 
-                                metaLabel = "3.000 bibit"
-                                title = "PT. Alpha Company"
-                                urlLink = "/"
-                                metaCaption = "Kec. Paloh Kab.sambas"
-                                img = "/img/index/bg-hero-banner.webp"
-                            />
-                        </div>
-                        <div className="mb-4 col-sm-6 col-lg-4 col-xl-3">
-                            <CardProduct 
-                                metaLabel = "3.000 bibit"
-                                title = "PT. Alpha Company"
-                                urlLink = "/"
-                                metaCaption = "Kec. Paloh Kab.sambas"
-                                img = "/img/index/bg-hero-banner.webp"
-                            />
-                        </div>
-                        <div className="mb-4 col-sm-6 col-lg-4 col-xl-3">
-                            <CardProduct 
-                                metaLabel = "3.000 bibit"
-                                title = "PT. Alpha Company"
-                                urlLink = "/"
-                                metaCaption = "Kec. Paloh Kab.sambas"
-                                img = "/img/index/bg-hero-banner.webp"
-                            />
-                        </div>
-                        <div className="mb-4 col-sm-6 col-lg-4 col-xl-3">
-                            <CardProduct 
-                                metaLabel = "3.000 bibit"
-                                title = "PT. Alpha Company"
-                                urlLink = "/"
-                                metaCaption = "Kec. Paloh Kab.sambas"
-                                img = "/img/index/bg-hero-banner.webp"
-                            />
-                        </div>
+                        {
+                            datas &&
+                            datas.map((item:dataType)=>{
+                                return (
+                                    <div className="mb-4 col-sm-6 col-lg-4 col-xl-3">
+                                        <CardProduct 
+                                            metaLabel = {item.label}
+                                            title = {item.company}
+                                            urlLink = {"/plantation/detail/"+item.id}
+                                            metaCaption = {item.area}
+                                            img = {item.image}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>        
             </main>
