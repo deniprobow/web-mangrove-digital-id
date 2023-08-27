@@ -10,7 +10,7 @@ export default function Plantation() {
                 <div className="container">
                     <h2>Plantation</h2>
                     <ul>
-                        <li><Link href="/">Beranda</Link></li>
+                        <li><Link href="/">Home</Link></li>
                         <li className="active"><Link href="/plantation">Plantation</Link></li>
                     </ul>
                 </div>

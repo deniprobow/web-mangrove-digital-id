@@ -2,9 +2,20 @@
     border-radius: 12px;
     overflow: hidden;
     background-color: $bg-section-grey;
+}
+
+.card-product--frame-img{
+    width: 100%;
+    padding-top: 75%;
+    background-color: $primary-color;
+    position: relative;
 
     > img {
         width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
     }
 }
 
