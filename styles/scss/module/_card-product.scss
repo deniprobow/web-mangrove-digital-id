@@ -1,0 +1,43 @@
+.card-product {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: $bg-section-grey;
+}
+
+.card-product--frame-img{
+    width: 100%;
+    padding-top: 75%;
+    background-color: $primary-color;
+    position: relative;
+
+    > img {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
+
+.card-product--text {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    > .label {
+        margin-bottom: 8px;
+    }
+
+    > a {
+        font-size: 1.25rem;
+        line-height: 1.3;
+        text-decoration: none;
+        font-weight: 800;
+        color: $primary-color;
+    }
+
+    > span {
+        color: #888;
+    }
+}

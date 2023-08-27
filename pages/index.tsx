@@ -5,14 +5,11 @@ import { faGooglePlay } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CardService } from '@/components/CardService'
 import { CardTestimonial } from '@/components/CardTestimonial'
-import { Footer } from '@/components/Footer'
 import Link from 'next/link';
 
 export default function Home() {
     return (
         <>
-            <Header />
-
             <section className="hero-banner">
                 <div className="container">
                     <div className="col-lg-8">
@@ -105,10 +102,10 @@ export default function Home() {
                         </div>
                         <div className="col-lg-7 offset-lg-1">
                             <CardTestimonial
-                                caption = 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
-                                img = '/img/index/sandiaga-uno.jpg'
-                                name = 'Sandiaga Uno'
-                                position= 'Mentri Pariwisata'
+                                caption = "Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement."
+                                img = "/img/index/sandiaga-uno.jpg"
+                                name = "Sandiaga Uno"
+                                position= "Mentri Pariwisata"
                             />
                         </div>
                     </div>
@@ -131,8 +128,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-            <Footer />
         </>
     )
 }
