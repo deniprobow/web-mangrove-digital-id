@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 import { useState, useEffect } from 'react'
 
 export const Header = () => {
@@ -35,7 +35,7 @@ export const Header = () => {
                     <ul>
                         <li><Link href="/">Home</Link></li>
                         <li><Link href="/">About Us</Link></li>
-                        <li><Link href="/">Plantation</Link></li>
+                        <li><Link href="/plantation">Plantation</Link></li>
                         <li><Link href="/">Mapping</Link></li>
                         <li><Link href="/">Gallery</Link></li>
                         <li><Link href="/">Contact</Link></li>

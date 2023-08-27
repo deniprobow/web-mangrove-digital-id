@@ -1,0 +1,11 @@
+.label {
+    padding: 0 8px;
+    font-weight: 700;
+    align-self: flex-start;
+}
+
+.label__main {
+    background-color: #D4DAFF;
+    color: $primary-color;
+    border-radius: 8px;
+}
