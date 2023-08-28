@@ -34,7 +34,7 @@ export const Header = () => {
                     <Link href="#">Mangrove Digital</Link>
                     <ul>
                         <li><Link href="/">Home</Link></li>
-                        <li><Link href="/">About Us</Link></li>
+                        <li><Link href="/about">About Us</Link></li>
                         <li><Link href="/plantation">Plantation</Link></li>
                         <li><Link href="/">Mapping</Link></li>
                         <li><Link href="/">Gallery</Link></li>

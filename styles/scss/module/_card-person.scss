@@ -1,0 +1,33 @@
+.card-person {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-person--frame-img {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    background-color: $primary-color;
+    position: relative;
+
+    > img {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
+
+.card-person--text {
+    background-color: $bg-section-grey;
+    padding: 30px;
+
+    > h4, > span {
+        color: #4A55A2;
+    }
+
+    > span {
+        font-size: 1.1rem;
+    }
+}
