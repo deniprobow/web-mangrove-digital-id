@@ -35,6 +35,95 @@
     }
 }
 
+.plantation-detail {
+    .map-google {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+}
+
+.plantation-detail--inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -80px;
+}
+
+.plantation-detail--meta {
+    background-color: $bg-section-grey;
+    padding: 20px 20px 20px 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: $primary-color;
+}
+
+.timeline-progress {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    border-left: 1px solid $primary-color;
+
+    > li {
+        padding-left: 25px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border: 3px solid #fff; 
+            background-color: $primary-color;
+            border-radius: 50%;
+            position: absolute;
+            top: 14px;
+            left: -8px;
+        }
+
+        > .progress--date {
+            padding: 3px 10px;
+            border: 4px solid #fff;
+            border-radius: 12px;
+            position: relative;
+            left: -5px;
+
+            &:before {
+                content: '';
+                width: 11px;
+                height: 11px;
+                background-color: #D4DAFF;
+                position: absolute;
+                top: 12px;
+                left: -5px;
+                transform: rotate(45deg);
+            }
+        }
+
+        > img {
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            margin-top: -15px;
+        }
+
+        > p {
+            line-height: 1.6;
+            border-radius: 0 0 12px 12px;
+            background-color: $bg-section-grey;
+            padding: 15px 20px;
+            color: $primary-color;
+        }
+    }
+}
+
 @media (max-width: 575px) {
     .form-search {
         margin-bottom: 80px;

@@ -41,6 +41,18 @@
     }
 }
 
+@media (max-width: 767px) {
+    .breadcrumb {
+        > .container {
+            flex-direction: column;
+
+            > ul {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
 @media (max-width: 575px) {
     .breadcrumb {
         padding-top: 150px;
