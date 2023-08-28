@@ -72,7 +72,7 @@ export default function Plantation() {
                             datas &&
                             datas.map((item:dataType)=>{
                                 return (
-                                    <div className="mb-4 col-sm-6 col-lg-4 col-xl-3">
+                                    <div className="mb-4 col-sm-6 col-lg-4">
                                         <CardProduct 
                                             metaLabel = {item.label}
                                             title = {item.company}
