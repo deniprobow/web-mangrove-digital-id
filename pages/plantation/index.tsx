@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import { CardProduct } from "@/components/CardProduct"
+import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
+import { CardProduct } from "@/components/cardProduct/CardProduct"
 
 export default function Plantation() {
     type dataType = {
@@ -11,6 +12,16 @@ export default function Plantation() {
         area  : string,
         image : string,
     }
+
+    const breadcrumbLinks = [
+        {
+            name : 'home',
+            url : '/home'
+        },{
+            name : 'Plantation',
+            url : '/plantation'
+        }
+    ]
 
     const datas = [
         {
@@ -45,15 +56,10 @@ export default function Plantation() {
 
     return (
         <>
-            <div className="breadcrumb">
-                <div className="container">
-                    <h2>Plantation</h2>
-                    <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li className="active"><Link href="/plantation">Plantation</Link></li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumb
+                title = "Plantation"
+                links = {breadcrumbLinks}
+            />
             <main className="main-wrapper">
                 <div className="container">
                     <div className="row">

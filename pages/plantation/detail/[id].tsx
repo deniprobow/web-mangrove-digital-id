@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
 
 export default function DetailPlantation() {
     const router = useRouter()
@@ -10,6 +11,19 @@ export default function DetailPlantation() {
         image : string,
         caption : string
     }
+
+    const breadcrumbLinks = [
+        {
+            name : 'Home',
+            url : '/home'
+        },{
+            name : 'Plantation',
+            url : '/plantation'
+        }, {
+            name : 'Detail Plantation',
+            url : '/plantation/detail/' + router.query.id
+        }
+    ]
 
     const datas = [
         {
@@ -33,16 +47,10 @@ export default function DetailPlantation() {
     ]
     return (
         <>
-            <div className="breadcrumb">
-                <div className="container">
-                    <h2>Detail Plantation</h2>
-                    <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/plantation">Plantation</Link></li>
-                        <li className="active"><Link href={`/plantation/detail/${router.query.id}`}>Detail Plantation</Link></li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumb
+                title = "Detail Plantation"
+                links = {breadcrumbLinks}
+            />
             <main className="main-wrapper">
                 <div className="container">
                     <div className="row">

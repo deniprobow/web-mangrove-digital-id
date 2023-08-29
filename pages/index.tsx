@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { Header } from '@/components/Header'
+import { Header } from '@/components/header/Header'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faGooglePlay } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { CardService } from '@/components/CardService'
-import { CardTestimonial } from '@/components/CardTestimonial'
+import { CardService } from '@/components/cardService/CardService'
+import { CardTestimonial } from '@/components/cardTestimonial/CardTestimonial'
 import Link from 'next/link';
 
 export default function Home() {

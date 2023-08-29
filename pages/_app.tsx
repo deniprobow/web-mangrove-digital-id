@@ -2,8 +2,8 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/styles/scss/style.scss'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
+import { Header } from '@/components/header/Header'
+import { Footer } from '@/components/footer/Footer'
 
   
 function App({ Component }: AppProps) {

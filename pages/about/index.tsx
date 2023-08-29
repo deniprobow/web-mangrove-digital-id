@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { CardPerson } from "@/components/CardPerson"
+import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
+import { CardPerson } from "@/components/cardPerson/CardPerson"
 
 export default function About() {
     type dataType = {
@@ -8,6 +8,16 @@ export default function About() {
         position : string,
         img  : string
     }
+
+    const breadcrumbLinks = [
+        {
+            name : 'home',
+            url : '/home'
+        },{
+            name : 'About Us',
+            url : '/about'
+        }
+    ]
 
     const datas = [
         {
@@ -44,15 +54,10 @@ export default function About() {
     ]
     return (
         <>
-            <div className="breadcrumb">
-                <div className="container">
-                    <h2>About US</h2>
-                    <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li className="active"><Link href="/about">About Us</Link></li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumb
+                title = "About Us"
+                links = {breadcrumbLinks}
+            />
             <main className="main-wrapper">
                 <div className="container">
                     <div className="row pb-5">
