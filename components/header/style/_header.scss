@@ -43,6 +43,13 @@
                 font-weight: 600;
             }
 
+            &.active {
+                > a {
+                    color: $accent-color !important;
+                    font-weight: 800;
+                }
+            }
+
             &:last-child {
                 margin-right: 0;
             }

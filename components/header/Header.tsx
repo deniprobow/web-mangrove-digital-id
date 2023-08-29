@@ -1,8 +1,11 @@
 import Link from "next/link"
 import { useState, useEffect } from 'react'
+import { useRouter } from "next/router"
 
 export const Header = () => {
     const [isScrolled, setScrolled] = useState(false)
+
+    const router = useRouter()
 
     const toogleNavMobile = () => {
         const elBody = document.querySelector('body')
@@ -33,12 +36,12 @@ export const Header = () => {
                 <nav className="header--nav">
                     <Link href="#">Mangrove Digital</Link>
                     <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/about">About Us</Link></li>
-                        <li><Link href="/plantation">Plantation</Link></li>
-                        <li><Link href="/mapping">Mapping</Link></li>
-                        <li><Link href="/">Gallery</Link></li>
-                        <li><Link href="/">Contact</Link></li>
+                        <li className={router.pathname == '/' ? 'active' : ''}><Link href="/">Home</Link></li>
+                        <li className={router.pathname == '/about' ? 'active' : ''}><Link href="/about">About Us</Link></li>
+                        <li className={router.pathname == '/plantation' ? 'active' : ''}><Link href="/plantation">Plantation</Link></li>
+                        <li className={router.pathname == '/mapping' ? 'active' : ''}><Link href="/mapping">Mapping</Link></li>
+                        <li className={router.pathname == '/album' ? 'active' : ''}><Link href="/album">Gallery</Link></li>
+                        <li className={router.pathname == '/contact' ? 'active' : ''}><Link href="/contact">Contact</Link></li>
                     </ul>
                 </nav>
                 <div className="header--toggle-nav-mobile">
