@@ -2,10 +2,10 @@ import Link from "next/link"
 
 interface BreadcrumbProps {
     title : string,
-    links : [{
+    links : {
         name : string,
         url : string
-    }]
+    }[]
 }
 
 export const Breadcrumb = ({title, links, ...props}: BreadcrumbProps) => {
@@ -21,8 +21,6 @@ export const Breadcrumb = ({title, links, ...props}: BreadcrumbProps) => {
                             )
                         })
                     }
-                    {/* <li><Link href="/">Home</Link></li>
-                    <li className="active"><Link href="/about">About Us</Link></li> */}
                 </ul>
             </div>
         </div>
