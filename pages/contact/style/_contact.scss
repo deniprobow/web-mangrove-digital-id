@@ -1,0 +1,32 @@
+.map-google__contact {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.contact-list {
+    padding-left: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+
+    > li {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+}
+
+.contact-list--icon {
+    width: 35px;
+    height: 35px;
+    background-color: $primary-color;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: .875rem;
+}

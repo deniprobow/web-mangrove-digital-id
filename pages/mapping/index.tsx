@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
 export default function Mapping() {
     const breadcrumbLinks = [
         {
-            name : 'home',
+            name : 'Home',
             url : '/home'
         },{
             name : 'Mapping',
