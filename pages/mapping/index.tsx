@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
+import { Breadcrumb } from "@/components/breadcrumb/style"
 
 export default function Mapping() {
     const breadcrumbLinks = [

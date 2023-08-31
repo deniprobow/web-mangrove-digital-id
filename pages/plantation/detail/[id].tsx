@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
+import { Breadcrumb } from "@/components/breadcrumb/style"
 
 export default function DetailPlantation() {
     const router = useRouter()

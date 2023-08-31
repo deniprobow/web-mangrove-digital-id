@@ -1,4 +1,4 @@
-import { Breadcrumb } from '@/components/breadcrumb/style/Breadcrumb'
+import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
 
@@ -30,7 +30,7 @@ export default function Album() {
 
     const datas = [
         {
-            link : '/photo',
+            link : '/photo/1',
             img : '/img/album/album-cover-1.webp',
             title : 'Album 1',
             metas : [
@@ -41,7 +41,7 @@ export default function Album() {
                 }
             ]
         },{
-            link : '/photo',
+            link : '/photo/1',
             img : '/img/album/album-cover-2.webp',
             title : 'Album 2',
             metas : [
@@ -52,7 +52,7 @@ export default function Album() {
                 }
             ]
         },{
-            link : '/photo',
+            link : '/photo/1',
             img : '/img/album/album-cover-3.webp',
             title : 'Album 3',
             metas : [
@@ -63,7 +63,7 @@ export default function Album() {
                 }
             ]
         },{
-            link : '/photo',
+            link : '/photo/1',
             img : '/img/album/album-cover-4.webp',
             title : 'Album 4',
             metas : [

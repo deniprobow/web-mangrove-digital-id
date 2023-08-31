@@ -1,4 +1,4 @@
-import { Breadcrumb } from '@/components/breadcrumb/style/Breadcrumb'
+import { Breadcrumb } from '@/components/breadcrumb/style'
 import { faMapMarkerAlt, faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
