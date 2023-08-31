@@ -1,5 +1,5 @@
-import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
-import { CardPerson } from "@/components/cardPerson/CardPerson"
+import { Breadcrumb } from "@/components/breadcrumb/style"
+import { CardPerson } from "@/components/cardPerson"
 
 export default function About() {
     type dataType = {

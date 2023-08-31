@@ -1,8 +1,8 @@
 import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import { Breadcrumb } from "@/components/breadcrumb/style/Breadcrumb"
-import { CardProduct } from "@/components/cardProduct/CardProduct"
+import { Breadcrumb } from "@/components/breadcrumb/style"
+import { CardProduct } from "@/components/cardProduct"
 
 export default function Plantation() {
     type dataType = {

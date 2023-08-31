@@ -4,6 +4,7 @@ section.hero-banner {
     display: flex;
     align-items: center;
     background-image: url('/img/index/bg-hero-banner.webp');
+    background-size: cover;
     position: relative;
 
     &:before {

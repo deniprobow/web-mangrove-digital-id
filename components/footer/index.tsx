@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {  faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Footer = () => {

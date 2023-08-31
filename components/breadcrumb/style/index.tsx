@@ -17,7 +17,7 @@ export const Breadcrumb = ({title, links, ...props}: BreadcrumbProps) => {
                     {
                         links.map((link, index) => {
                             return (
-                                <li className={`${index === links.length - 1 && "active"}`} ><Link href={`${link.url}`}>{link.name}</Link></li>
+                                <li className={`${index === links.length - 1 && "active"}`} ><Link href={link.url}>{link.name}</Link></li>
                             )
                         })
                     }
