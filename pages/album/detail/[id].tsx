@@ -1,8 +1,14 @@
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
+import { useRouter } from 'next/router'
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
+import type { Fancybox as FancyboxType } from "@fancyapps/ui/types";
+import * as Fancyapps from "@fancyapps/ui";
 
-export default function Album() {
+export default function DetailALbum() {
+    const router = useRouter()
+    const Fancybox: typeof FancyboxType = Fancyapps.Fancybox
+
     type dataType = {
         link : string,
         img : string,
@@ -25,52 +31,38 @@ export default function Album() {
         },{
             name : 'Album Documentation',
             url : '/album'
+        },{
+            name : 'Photo of Album',
+            url : '/album/detail/' + router.query.id
         }
     ]
 
     const datas = [
         {
-            link : '/album/detail/1',
+            link : '/img/album/album-cover-1.webp',
             img : '/img/album/album-cover-1.webp',
-            title : 'Album 1',
+            title : 'Photo 1',
             metas : [
                 {
                     text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
                 }
             ]
         },{
-            link : '/album/detail/1',
+            link : '/img/album/album-cover-2.webp',
             img : '/img/album/album-cover-2.webp',
-            title : 'Album 2',
+            title : 'Photo 2',
             metas : [
                 {
                     text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
                 }
             ]
         },{
-            link : '/album/detail/1',
+            link : '/img/album/album-cover-3.webp',
             img : '/img/album/album-cover-3.webp',
-            title : 'Album 3',
+            title : 'Photo 3',
             metas : [
                 {
                     text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
-                }
-            ]
-        },{
-            link : '/album/detail/1',
-            img : '/img/album/album-cover-4.webp',
-            title : 'Album 4',
-            metas : [
-                {
-                    text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
                 }
             ]
         }
@@ -79,7 +71,7 @@ export default function Album() {
     return (
         <>
             <Breadcrumb
-                title = "Album Documentation"
+                title = "Photo of Album"
                 links = {breadcrumbLinks}
             />
             <main className="main-wrapper">

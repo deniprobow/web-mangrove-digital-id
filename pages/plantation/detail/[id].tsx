@@ -45,6 +45,7 @@ export default function DetailPlantation() {
             caption : "Lorem ipsum dolor sit amet consetetur adipisicing elit."
         },
     ]
+    
     return (
         <>
             <Breadcrumb
