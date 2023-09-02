@@ -2,12 +2,9 @@ import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
 import { useRouter } from 'next/router'
 import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
-import type { Fancybox as FancyboxType } from "@fancyapps/ui/types";
-import * as Fancyapps from "@fancyapps/ui";
 
 export default function DetailALbum() {
     const router = useRouter()
-    const Fancybox: typeof FancyboxType = Fancyapps.Fancybox
 
     type dataType = {
         link : string,
