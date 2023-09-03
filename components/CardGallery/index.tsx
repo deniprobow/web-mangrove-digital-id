@@ -12,7 +12,7 @@ interface CardGalleryProps {
 
 export const CardGallery = ({img, title, metas, link, ...props}: CardGalleryProps) => {
     return (
-        <Link className="card-gallery" href={link}>
+        <a className="card-gallery" href={link} data-fancybox="gallery">
             <img src={img} alt="" />
             <div className="card-gallery--text">
                 <h5>{title}</h5>
@@ -26,6 +26,6 @@ export const CardGallery = ({img, title, metas, link, ...props}: CardGalleryProp
                     }
                 </ul>
             </div>
-        </Link>
+        </a>
     )
 }

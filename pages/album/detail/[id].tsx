@@ -1,7 +1,8 @@
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
 import { useRouter } from 'next/router'
-import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import Fancybox from '@/components/Fancybox'
 
 export default function DetailALbum() {
     const router = useRouter()
@@ -74,21 +75,23 @@ export default function DetailALbum() {
             <main className="main-wrapper">
                 <div className="container">
                     <ResponsiveMasonry columnsCountBreakPoints={breakPoints}>
-                        <Masonry gutter="24px">
-                            {
-                                datas &&
-                                datas.map((data:dataType) => {
-                                    return (
-                                        <CardGallery
-                                            link = {data.link}
-                                            img = {data.img}
-                                            title = {data.title}
-                                            metas = {data.metas}
-                                        />
-                                    )
-                                })
-                            }
-                        </Masonry>
+                        <Fancybox>
+                            <Masonry gutter="24px">
+                                {
+                                    datas &&
+                                    datas.map((data:dataType) => {
+                                        return (
+                                            <CardGallery
+                                                link = {data.link}
+                                                img = {data.img}
+                                                title = {data.title}
+                                                metas = {data.metas}
+                                            />
+                                        )
+                                    })
+                                }
+                            </Masonry>
+                        </Fancybox>
                     </ResponsiveMasonry>
                 </div>
             </main>
