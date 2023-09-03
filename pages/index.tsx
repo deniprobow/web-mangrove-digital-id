@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import { Header } from '@/components/header'
+
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faGooglePlay } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Loading } from '@/components/Loading'
 import { CardService } from '@/components/cardService'
 import { CardTestimonial } from '@/components/cardTestimonial'
 import { useRef, useState, useEffect } from 'react'
@@ -76,6 +76,7 @@ export default function Home() {
 
     return (
         <>
+            <Loading />
             <section className="hero-banner">
                 <div className="container">
                     <div className="col-lg-8">

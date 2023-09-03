@@ -1,5 +1,6 @@
-import { Breadcrumb } from "@/components/breadcrumb/style"
-import { CardPerson } from "@/components/cardPerson"
+import { Breadcrumb } from '@/components/breadcrumb/style'
+import { CardPerson } from '@/components/cardPerson'
+import { Loading } from '@/components/Loading'
 
 export default function About() {
     type dataType = {
@@ -54,6 +55,7 @@ export default function About() {
     ]
     return (
         <>
+            <Loading />
             <Breadcrumb
                 title = "About Us"
                 links = {breadcrumbLinks}

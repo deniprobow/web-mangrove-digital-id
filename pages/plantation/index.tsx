@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { Loading } from '@/components/Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { Breadcrumb } from "@/components/breadcrumb/style"
@@ -56,6 +56,7 @@ export default function Plantation() {
 
     return (
         <>
+            <Loading />
             <Breadcrumb
                 title = "Plantation"
                 links = {breadcrumbLinks}

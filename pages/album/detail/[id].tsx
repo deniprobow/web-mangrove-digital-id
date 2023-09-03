@@ -1,3 +1,4 @@
+import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
 import { useRouter } from 'next/router'
@@ -68,6 +69,7 @@ export default function DetailALbum() {
 
     return (
         <>
+            <Loading />
             <Breadcrumb
                 title = "Photo of Album"
                 links = {breadcrumbLinks}

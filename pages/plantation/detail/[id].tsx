@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { Breadcrumb } from "@/components/breadcrumb/style"
+import { useRouter } from 'next/router'
+import { Loading } from '@/components/Loading'
+import { Breadcrumb } from '@/components/breadcrumb/style'
 
 export default function DetailPlantation() {
     const router = useRouter()
@@ -48,6 +48,7 @@ export default function DetailPlantation() {
     
     return (
         <>
+            <Loading />
             <Breadcrumb
                 title = "Detail Plantation"
                 links = {breadcrumbLinks}
