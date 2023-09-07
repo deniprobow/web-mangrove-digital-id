@@ -1,0 +1,42 @@
+.card {
+    border: 0;
+    box-shadow: 0 20px 30px rgba(#000, .1);
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: rgba($primary-color, .05);
+    border: 0;
+    padding: 25px 40px;
+}
+
+.card-body {
+    padding: 40px;
+}
+
+.card-order {
+    > .card-header {
+        > h4 {
+            color: $primary-color;
+        }
+    }
+
+    .form-floating{
+        .form-control {
+            border-radius: 0;
+            border-width: 0 0 1px 0;
+            padding-top: 40px;
+            padding-left: 0;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        > label {
+            padding-left: 0;
+            color: #555;
+        }
+    }
+}
