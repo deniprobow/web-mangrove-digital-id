@@ -11,7 +11,7 @@ export const Loading = () => {
     return(
         <div className={`preloader ${!isLoading ? "is-hide" : ""}`}>
             <svg className="preloader--svg">
-                <text x="50%" y="50%" dy=".35em" text-anchor="middle">Mangrove Digital</text>
+                <text x="50%" y="50%" dy=".35em" textAnchor="middle">Mangrove Digital</text>
             </svg>
         </div>
     )
