@@ -12,6 +12,10 @@ section {
 
 .main-wrapper {
     padding: 100px 0;
+
+    &.bg-grey {
+        background-color: $bg-section-grey;
+    }
 }
 
 @media (max-width: 575px) {

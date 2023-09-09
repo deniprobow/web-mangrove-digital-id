@@ -32,6 +32,7 @@
         padding-left: 0;
         margin-bottom: 0;
         display: flex;
+        align-items: center;
         list-style: none;
         gap: 45px;
 
@@ -47,6 +48,15 @@
                 > a {
                     color: $accent-color !important;
                     font-weight: 800;
+                }
+            }
+
+            &.nav-main {
+                > a {
+                    display: inline-block;
+                    padding: 7px 15px;
+                    border-radius: 6px;
+                    background-color: $accent-color;
                 }
             }
 
@@ -71,6 +81,12 @@ header.header {
                 > li {
                     > a {
                         color: $primary-color;
+                    }
+
+                    &.nav-main {
+                        > a {
+                            color: #fff;
+                        }
                     }
                 }
             }

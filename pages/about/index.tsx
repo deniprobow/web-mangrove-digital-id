@@ -23,24 +23,24 @@ export default function About() {
     const datas = [
         {
             id : 1,
-            name : 'Sonny Houston',
-            position : 'Founder',
+            name : 'Rudi Hartono',
+            position : 'Founder/CEO',
             img : 'https://randomuser.me/api/portraits/men/97.jpg'
         },{
             id : 2,
-            name : 'Enya Cummings',
-            position : 'Co Founder',
-            img : 'https://randomuser.me/api/portraits/women/79.jpg'
+            name : 'Adi Bujangk',
+            position : 'Co Founder/COO',
+            img : 'https://randomuser.me/api/portraits/men/97.jpg'
         },{
             id : 3,
-            name : 'Sarah Humphrey',
-            position : 'Chief Executive Officer',
-            img : 'https://randomuser.me/api/portraits/women/63.jpg'
+            name : 'Haji Udin',
+            position : 'Co Founder/CFO',
+            img : 'https://randomuser.me/api/portraits/men/97.jpg'
         },{
             id : 4,
             name : 'Veronica Cole',
             position : 'Chief Operation Officer',
-            img : 'https://randomuser.me/api/portraits/women/8.jpg'
+            img : 'https://randomuser.me/api/portraits/men/97.jpg'
         },{
             id : 5,
             name : 'Mohamed Krueger',

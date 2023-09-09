@@ -61,7 +61,7 @@ export default function Plantation() {
                 title = "Plantation"
                 links = {breadcrumbLinks}
             />
-            <main className="main-wrapper">
+            <main className="main-wrapper bg-grey">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-10 offset-lg-1">

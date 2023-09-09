@@ -36,12 +36,13 @@ export const Header = () => {
                 <nav className="header--nav">
                     <Link href="#">Mangrove Digital</Link>
                     <ul>
-                        <li className={router.pathname == '/' ? 'active' : ''}><Link href="/">Home</Link></li>
-                        <li className={router.pathname == '/about' ? 'active' : ''}><Link href="/about">About Us</Link></li>
-                        <li className={router.pathname == '/plantation' ? 'active' : ''}><Link href="/plantation">Plantation</Link></li>
-                        <li className={router.pathname == '/mapping' ? 'active' : ''}><Link href="/mapping">Mapping</Link></li>
-                        <li className={router.pathname == '/album' ? 'active' : ''}><Link href="/album">Gallery</Link></li>
-                        <li className={router.pathname == '/contact' ? 'active' : ''}><Link href="/contact">Contact</Link></li>
+                        <li className={router.pathname == "/" ? "active" : ""}><Link href="/">Home</Link></li>
+                        <li className={router.pathname == "/about" ? "active" : ""}><Link href="/about">About Us</Link></li>
+                        <li className={router.pathname == "/plantation" ? "active" : ""}><Link href="/plantation">Plantation</Link></li>
+                        <li className={router.pathname == "/mapping" ? "active" : ""}><Link href="/mapping">Mapping</Link></li>
+                        <li className={router.pathname == "/album" ? "active" : ""}><Link href="/album">Gallery</Link></li>
+                        <li className={router.pathname == "/contact" ? "active" : ""}><Link href="/contact">Contact</Link></li>
+                        <li className="nav-main"><Link href="/donation">Donation</Link></li>
                     </ul>
                 </nav>
                 <div className="header--toggle-nav-mobile">
