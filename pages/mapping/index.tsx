@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { Loading } from '@/components/Loading'
 import { Breadcrumb } from "@/components/breadcrumb/style"
 
 export default function Mapping() {
@@ -14,6 +14,7 @@ export default function Mapping() {
 
     return (
         <>
+            <Loading />
             <Breadcrumb
                 title = "Mapping"
                 links = {breadcrumbLinks}

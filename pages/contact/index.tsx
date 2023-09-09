@@ -1,3 +1,4 @@
+import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { faMapMarkerAlt, faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
@@ -16,6 +17,7 @@ export default function Contact() {
 
     return (
         <>
+            <Loading />
             <Breadcrumb
                 title = "Contact"
                 links = {breadcrumbLinks}

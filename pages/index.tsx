@@ -1,15 +1,82 @@
-import Image from 'next/image'
-import { Header } from '@/components/header'
+
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faGooglePlay } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Loading } from '@/components/Loading'
 import { CardService } from '@/components/cardService'
 import { CardTestimonial } from '@/components/cardTestimonial'
+import { useRef, useState, useEffect } from 'react'
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Link from 'next/link';
 
 export default function Home() {
+    const refSlide = useRef(null)
+    const [currentIndexSlide, setCurrentIndexSlide] = useState<number>(0)
+    const [totalSlide, setTotalSlide] = useState<number>(0)
+
+    useEffect(() => {
+        if(refSlide.current) {
+            setTotalSlide(refSlide.current.props.children.length)
+        }
+    }, [])
+
+    const slickSettings = {
+        dots : false,
+        infinite : true,
+        speed : 500,
+        slidesToShow : 1,
+        variableWidth : true,
+        afterChange : (index: number) => {
+            setCurrentIndexSlide(index)
+        },
+        responsive : [
+            {
+                breakpoint: 991,
+                settings : {
+                    centerMode: true
+                }
+            },{
+                breakpoint: 767,
+                settings: {
+                    centerMode: false,
+                    variableWidth: false
+                }
+            }
+        ],
+    }
+
+    type dataType = {
+        img : string,
+        name : string,
+        position: string,
+        testimonial : string
+    }
+
+    const dataTestmonials = [
+        {
+            img : '/img/index/sandiaga-uno.jpg',
+            name : 'Sandiaga Uno',
+            position: 'Menteri Pariwisata',
+            testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
+        },{
+            img : '/img/index/sandiaga-uno.jpg',
+            name : 'Sandiaga Uno',
+            position: 'Menteri Pariwisata',
+            testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
+        },{
+            img : '/img/index/sandiaga-uno.jpg',
+            name : 'Sandiaga Uno',
+            position: 'Menteri Pariwisata',
+            testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
+        }
+    ]
+
     return (
         <>
+            <Loading />
             <section className="hero-banner">
                 <div className="container">
                     <div className="col-lg-8">
@@ -88,25 +155,34 @@ export default function Home() {
                             <p className="mb-0">the concept of the digital mangrove serves as a captivating analogy that mirrors the intricate interplay of connectivity, diversity, adaptation, and preservation in our online world.</p>
                             <div className="testimonial--action-slider">
                                 <div className="testimonial--count-slider">
-                                    1 / 4
+                                    {currentIndexSlide + 1} / {totalSlide}
                                 </div>
                                 <div className="testimonial--nav-slider">
-                                    <a className="nav-slider nav-slider__left" href="#">
+                                    <div className="nav-slider nav-slider__left" onClick={() => refSlide?.current?.slickPrev()}>
                                         <FontAwesomeIcon icon = {faArrowLeft} />
-                                    </a>
-                                    <a href="" className="nav-slider nav-slider__right">
+                                    </div>
+                                    <div className="nav-slider nav-slider__right" onClick={() => refSlide?.current?.slickNext()}>
                                         <FontAwesomeIcon icon = {faArrowRight} />
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-7 offset-lg-1">
-                            <CardTestimonial
-                                caption = "Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement."
-                                img = "/img/index/sandiaga-uno.jpg"
-                                name = "Sandiaga Uno"
-                                position= "Mentri Pariwisata"
-                            />
+                            <Slider ref={refSlide} {...slickSettings}>
+                                {
+                                    dataTestmonials &&
+                                    dataTestmonials.map((item:dataType) => {
+                                        return (
+                                            <CardTestimonial
+                                                caption = {item.testimonial}
+                                                img = {item.img}
+                                                name = {item.name}
+                                                position = {item.position}
+                                            />
+                                        )
+                                    })
+                                }
+                            </Slider>
                         </div>
                     </div>
                 </div>

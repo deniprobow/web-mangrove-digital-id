@@ -1,9 +1,13 @@
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
-import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
+import { useRouter } from 'next/router'
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import Fancybox from '@/components/Fancybox'
 
-export default function Album() {
+export default function DetailALbum() {
+    const router = useRouter()
+
     type dataType = {
         link : string,
         img : string,
@@ -26,52 +30,38 @@ export default function Album() {
         },{
             name : 'Album Documentation',
             url : '/album'
+        },{
+            name : 'Photo of Album',
+            url : '/album/detail/' + router.query.id
         }
     ]
 
     const datas = [
         {
-            link : '/album/detail/1',
+            link : '/img/album/album-cover-1.webp',
             img : '/img/album/album-cover-1.webp',
-            title : 'Album 1',
+            title : 'Photo 1',
             metas : [
                 {
                     text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
                 }
             ]
         },{
-            link : '/album/detail/1',
+            link : '/img/album/album-cover-2.webp',
             img : '/img/album/album-cover-2.webp',
-            title : 'Album 2',
+            title : 'Photo 2',
             metas : [
                 {
                     text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
                 }
             ]
         },{
-            link : '/album/detail/1',
+            link : '/img/album/album-cover-3.webp',
             img : '/img/album/album-cover-3.webp',
-            title : 'Album 3',
+            title : 'Photo 3',
             metas : [
                 {
                     text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
-                }
-            ]
-        },{
-            link : '/album/detail/1',
-            img : '/img/album/album-cover-4.webp',
-            title : 'Album 4',
-            metas : [
-                {
-                    text : 'August 31, 2023'
-                },{
-                    text : '4 photos'
                 }
             ]
         }
@@ -81,27 +71,29 @@ export default function Album() {
         <>
             <Loading />
             <Breadcrumb
-                title = "Album Documentation"
+                title = "Photo of Album"
                 links = {breadcrumbLinks}
             />
             <main className="main-wrapper">
                 <div className="container">
                     <ResponsiveMasonry columnsCountBreakPoints={breakPoints}>
-                        <Masonry gutter="24px">
-                            {
-                                datas &&
-                                datas.map((data:dataType) => {
-                                    return (
-                                        <CardGallery
-                                            link = {data.link}
-                                            img = {data.img}
-                                            title = {data.title}
-                                            metas = {data.metas}
-                                        />
-                                    )
-                                })
-                            }
-                        </Masonry>
+                        <Fancybox>
+                            <Masonry gutter="24px">
+                                {
+                                    datas &&
+                                    datas.map((data:dataType) => {
+                                        return (
+                                            <CardGallery
+                                                link = {data.link}
+                                                img = {data.img}
+                                                title = {data.title}
+                                                metas = {data.metas}
+                                            />
+                                        )
+                                    })
+                                }
+                            </Masonry>
+                        </Fancybox>
                     </ResponsiveMasonry>
                 </div>
             </main>
