@@ -32,9 +32,13 @@ export const Header = () => {
     return (
         <header onClick={toogleNavMobile} className={`header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
-                <Link className="header--logo" href="/">Mangrove Digital</Link>
+                <Link className="header--logo" href="/">
+                    <img src="/img/logo.webp" alt="" />
+                </Link>
                 <nav className="header--nav">
-                    <Link href="#">Mangrove Digital</Link>
+                    <Link href="#">
+                        <img src="/img/logo.webp" alt="" />
+                    </Link>
                     <ul>
                         <li className={router.pathname == "/" ? "active" : ""}><Link href="/">Home</Link></li>
                         <li className={router.pathname == "/about" ? "active" : ""}><Link href="/about">About Us</Link></li>
