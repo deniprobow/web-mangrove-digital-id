@@ -1,10 +1,11 @@
 
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faGooglePlay } from '@fortawesome/free-brands-svg-icons'
+import { faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Loading } from '@/components/Loading'
 import { CardService } from '@/components/cardService'
 import { CardTestimonial } from '@/components/cardTestimonial'
+import { CardProduct } from "@/components/cardProduct"
 import { useRef, useState, useEffect } from 'react'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
@@ -71,6 +72,38 @@ export default function Home() {
             name : 'Sandiaga Uno',
             position: 'Menteri Pariwisata',
             testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
+        }
+    ]
+
+    type dataTypePlantation = {
+        id : number,
+        label : string,
+        company : string,
+        area  : string,
+        image : string,
+    }
+
+    const dataPlantations = [
+        {
+            id : 1,
+            label : "30.000 Pohon",
+            company : "PT. Alpha Company",
+            area  : "Kec. Paloh Kab.sambas",
+            image : "/img/plantation-1.webp"
+        },
+        {
+            id : 2,
+            label : "50.000 Pohon",
+            company : "PT. Adiyaksa Company",
+            area  : "Kec. Sui Pinyuh Kab.Mempawah",
+            image : "/img/plantation-2.webp"
+        },
+        {
+            id : 3,
+            label : "60.000 Pohon",
+            company : "PT. Google Indonesia",
+            area  : "Kec. Sui Kupah Kab.KubuRaya",
+            image : "/img/plantation-3.webp"
         }
     ]
 
@@ -190,16 +223,50 @@ export default function Home() {
 
             <section className="download bg-grey">
                 <div className="container">
+                    <div className="row mb-5">
+                        <div className="col-lg-6 offset-lg-3">
+                            <h1 className="h-section text-center">Latest Plantation</h1>
+                        </div>
+                    </div>
+                    <div className="row">
+                        {
+                            dataPlantations &&
+                            dataPlantations.map((item:dataTypePlantation)=>{
+                                return (
+                                    <div className="mb-4 col-sm-6 col-lg-4">
+                                        <CardProduct 
+                                            metaLabel = {item.label}
+                                            title = {item.company}
+                                            urlLink = {"/plantation/detail/"+item.id}
+                                            metaCaption = {item.area}
+                                            img = {item.image}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div className="container">
                     <div className="row">
                         <div className="col-lg-5 download--side-img mb-5 mb-lg-0">
-                            <img src="/img/index/mobile-app.jpg" alt="" />
+                            <img src="/img/index/mobile-app.webp" alt="" />
                         </div>
                         <div className="col-lg-6 offset-lg-1 download--side-text">
-                            <h1>Download Aplikasi Mangrove Digital</h1>
-                            <a href="#">
-                                <FontAwesomeIcon icon = {faGooglePlay} />
-                                <span className="ms-3">Playstore</span>
-                            </a>
+                            <h1 className="mb-4">Download Aplikasi Mangrove Digital</h1>
+                            <div className="d-block">
+                                <a href="#" className="me-3">
+                                    <FontAwesomeIcon icon = {faGooglePlay} />
+                                    <span className="ms-3">Playstore</span>
+                                </a>
+                                <a href="#">
+                                    <FontAwesomeIcon icon = {faApple} />
+                                    <span className="ms-3">AppStore</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
