@@ -103,7 +103,15 @@ header.header {
     display: none;
 }
 
-@media (max-width: 991px) {
+@media(max-width: 1200px) {
+    .header--nav {
+        > ul {
+            gap: 30px;
+        }
+    }
+}
+
+@media(max-width: 991px) {
     .header--toggle-nav-mobile {
         width: 25px;
         height: 25px;
@@ -114,7 +122,7 @@ header.header {
         > span {
             width: 25px;
             height: 3px;
-            background-color: #fff;
+            background-color: $primary-color;
             transform: rotate(0deg);
             transition: .35s ease-in-out;
 
@@ -136,7 +144,7 @@ header.header {
         width: 270px;
         height: 100%;
         background-color: $bg-section-grey;
-        border-left: 1px solid rgba($primary-color, .05);
+        border-left: 1px solid rgba($primary-color, .2);
         padding-top: 10px;
         position: fixed;
         top: 0;
@@ -184,14 +192,6 @@ header.header {
         left: auto;
         right: 0;
         transition: .35s ease-in-out;
-
-        &.scrolled {
-            .header--toggle-nav-mobile {
-                > span {
-                    background-color: $primary-color;
-                }
-            }
-        }
     }
 }
 

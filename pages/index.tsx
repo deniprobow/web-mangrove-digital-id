@@ -112,8 +112,44 @@ export default function Home() {
             <Loading />
             <section className="hero-banner">
                 <div className="container">
-                    <div className="col-lg-8">
-                        <h1 className="hero-banner--text">Mangrove Digital : Menanam Mangrove, Menyelamatkan Bumi</h1>
+                    <div className="row">
+                        <div className="col-lg-6 hero-banner--img order-lg-2">
+                            <div className="tile-count">
+                                <img src="/img/index/icon-ecology.webp" alt="" />
+                                <div className="tile-text">
+                                    <h2>500</h2>
+                                    <span>Donation</span>
+                                </div>
+                            </div>
+                            <div className="tile-count">
+                                <img src="/img/index/icon-marker.webp" alt="" />
+                                <div className="tile-text">
+                                    <h2>200</h2>
+                                    <span>Places</span>
+                                </div>
+                            </div>
+                            <div className="tile-count">
+                                <img src="/img/index/icon-seed.webp" alt="" />
+                                <div className="tile-text">
+                                    <h2>45M+</h2>
+                                    <span>Seed Planting</span>
+                                </div>
+                            </div>
+                            <img src="/img/index/img-hero-banner.webp" alt="" />
+                        </div>
+                        <div className="col-lg-6 hero-banner--text order-lg-1">
+                            <h1 className="mb-5">Mangrove Digital : Menanam Mangrove, Menyelamatkan Bumi</h1>
+                            <div className="d-flex gap-2">
+                                <a href="#" className="btn btn__banner">
+                                    <FontAwesomeIcon icon = {faGooglePlay} />
+                                    <span className="ms-3">Playstore</span>
+                                </a>
+                                <a href="#" className="btn btn__banner">
+                                    <FontAwesomeIcon icon = {faApple} />
+                                    <span className="ms-3">AppStore</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -121,11 +157,11 @@ export default function Home() {
             <section className="partner bg-grey">
                 <div className="container">
                     <ul>
-                        <li><img src="/img/index/logo-akcaya.png" height="100px" alt="" /></li>
-                        <li><img src="/img/index/logo-brgm.png" height="100px" alt="" /></li>
-                        <li><img src="/img/index/logo-kementrian-kelautan-perikanan.png" height="100px" alt="" /></li>
-                        <li><img src="/img/index/logo-kubu-raya.png" height="100px" alt="" /></li>
-                        <li><img src="/img/index/logo-mowilex.png" height="70px" alt="" /></li>
+                        <li><img src="/img/index/logo-akcaya.png" height="80px" alt="" /></li>
+                        <li><img src="/img/index/logo-brgm.png" height="80px" alt="" /></li>
+                        <li><img src="/img/index/logo-kementrian-kelautan-perikanan.png" height="80px" alt="" /></li>
+                        <li><img src="/img/index/logo-kubu-raya.png" height="80px" alt="" /></li>
+                        <li><img src="/img/index/logo-mowilex.png" height="50px" alt="" /></li>
                     </ul>
                 </div>
             </section>
@@ -257,12 +293,12 @@ export default function Home() {
                         </div>
                         <div className="col-lg-6 offset-lg-1 download--side-text">
                             <h1 className="mb-4">Download Aplikasi Mangrove Digital</h1>
-                            <div className="d-block">
-                                <a href="#" className="me-3">
+                            <div className="d-flex gap-2">
+                                <a href="#" className="btn btn__banner">
                                     <FontAwesomeIcon icon = {faGooglePlay} />
                                     <span className="ms-3">Playstore</span>
                                 </a>
-                                <a href="#">
+                                <a href="#" className="btn btn__banner">
                                     <FontAwesomeIcon icon = {faApple} />
                                     <span className="ms-3">AppStore</span>
                                 </a>

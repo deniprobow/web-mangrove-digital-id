@@ -8,3 +8,17 @@
     background-color: $primary-color;
     color: #fff;
 }
+
+.btn__banner {
+    align-self: flex-start;
+    border-radius: 13px;
+    font-size: 1.25rem;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 18px 40px;
+    text-decoration: none;
+
+    > span {
+        font-weight: 700;
+    }
+}
