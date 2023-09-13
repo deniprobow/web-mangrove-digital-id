@@ -109,7 +109,7 @@ export default function Home() {
 
     return (
         <>
-            <Loading />
+            {/* <Loading /> */}
             <section className="hero-banner">
                 <div className="container">
                     <div className="row">
@@ -139,7 +139,7 @@ export default function Home() {
                         </div>
                         <div className="col-lg-6 hero-banner--text order-lg-1">
                             <h1 className="mb-5">Mangrove Digital : Menanam Mangrove, Menyelamatkan Bumi</h1>
-                            <div className="d-flex gap-2">
+                            <div className="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
                                 <a href="#" className="btn btn__banner">
                                     <FontAwesomeIcon icon = {faGooglePlay} />
                                     <span className="ms-3">Playstore</span>
@@ -193,21 +193,21 @@ export default function Home() {
                     <div className="row pt-3">
                         <div className="col-lg-4 mb-4 mb-lg-0">
                             <CardService
-                                img = "/img/index/icon-service-1.png"
+                                img = "/img/index/service-1.webp"
                                 title = "Order Plantation"
                                 description= "The digital mangrove is characterized by its rich diversity of content. From blog posts to videos, podcasts to memes, it hosts a plethora of multimedia elements that cater to a wide range of interests. This dynamic environment allows creators to showcase their talents."
                             />
                         </div>
                         <div className="col-lg-4 mb-4 mb-lg-0">
                             <CardService 
-                                img = "/img/index/icon-service-2.png"
+                                img = "/img/index/service-2.webp"
                                 title = "Order Seeds"
                                 description= "The digital mangrove is characterized by its rich diversity of content. From blog posts to videos, podcasts to memes, it hosts a plethora of multimedia elements that cater to a wide range of interests. This dynamic environment allows creators to showcase their talents."
                             />
                         </div>
                         <div className="col-lg-4">
                             <CardService 
-                                img = "/img/index/icon-service-3.png"
+                                img = "/img/index/service-3.webp"
                                 title = "Restore Carbons"
                                 description= "Just as mangroves have evolved to thrive in harsh coastal environments, the digital mangrove demonstrates a remarkable ability to adapt. Trends come and go, platforms evolve, and user behaviors change In this ever-evolving ecosystem, content creators and digital entities must stay nimble."
                             />
@@ -269,7 +269,7 @@ export default function Home() {
                             dataPlantations &&
                             dataPlantations.map((item:dataTypePlantation)=>{
                                 return (
-                                    <div className="mb-4 col-sm-6 col-lg-4">
+                                    <div className="mb-4 col-lg-4">
                                         <CardProduct 
                                             metaLabel = {item.label}
                                             title = {item.company}
@@ -292,8 +292,8 @@ export default function Home() {
                             <img src="/img/index/mobile-app.webp" alt="" />
                         </div>
                         <div className="col-lg-6 offset-lg-1 download--side-text">
-                            <h1 className="mb-4">Download Aplikasi Mangrove Digital</h1>
-                            <div className="d-flex gap-2">
+                            <h1 className="text-center text-lg-start">Download Aplikasi Mangrove Digital</h1>
+                            <div className="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
                                 <a href="#" className="btn btn__banner">
                                     <FontAwesomeIcon icon = {faGooglePlay} />
                                     <span className="ms-3">Playstore</span>

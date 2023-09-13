@@ -10,7 +10,7 @@ interface CardProductProps {
 
 export const CardProduct = ({metaLabel, title, urlLink, metaCaption, img, ...props}:CardProductProps) => {
     return (
-        <div className="card-product">
+        <div className="card-product h-100">
             <div className="card-product--frame-img">
                 <img src={`${img}`} alt="" />
             </div>

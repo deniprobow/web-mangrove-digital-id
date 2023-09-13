@@ -2,6 +2,7 @@
     padding: 15px 30px;
     font-weight: 700;
     border-radius: 8px;
+    transition: .35s ease-in-out;
 }
 
 .btn__main {
@@ -20,5 +21,14 @@
 
     > span {
         font-weight: 700;
+    }
+
+    &:hover {
+        background-color: darken($primary-color, 8%);
+        color: #fff;
+
+        > span {
+            color: #fff;
+        }
     }
 }

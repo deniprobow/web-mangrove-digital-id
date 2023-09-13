@@ -199,6 +199,15 @@ section.partner {
     }
 }
 
+@media(max-width: 1200px) {
+    .download--side-text {
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0;
+        }
+    }
+}
+
 @media(min-width: 992px) and (max-width: 1199px) {
     .hero-banner--img {
         .tile-count {
@@ -250,7 +259,7 @@ section.partner {
     section.partner {
         ul {
             > li {
-                width: calc(50% - 40px);
+                width: 33.333%;
             }
         }
     }
@@ -293,17 +302,6 @@ section.partner {
                 top: auto;
                 bottom: -10%;
                 left: 5.5%;
-            }
-        }
-    }
-
-    section.partner {
-        ul {
-            gap: 0;
-            flex-wrap: wrap;
-
-            > li {
-                width: 33.3333%;
             }
         }
     }
