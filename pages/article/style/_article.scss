@@ -1,0 +1,16 @@
+.single-post--meta {
+    padding-left: 0;
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    color: rgba(#000, .4);
+    font-weight: 600;
+    margin-bottom: 5px;
+
+    > li {
+        display: flex;
+        gap: 7px;
+        align-items: center;
+    }
+}
+
