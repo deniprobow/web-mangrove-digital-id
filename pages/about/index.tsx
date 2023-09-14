@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardPerson } from '@/components/cardPerson'
 import { Loading } from '@/components/Loading'
@@ -55,6 +56,7 @@ export default function About() {
     ]
     return (
         <>
+            <Header isHomePage={false} />
             <Loading />
             <Breadcrumb
                 title = "About Us"

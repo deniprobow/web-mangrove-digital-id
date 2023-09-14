@@ -1,6 +1,7 @@
 
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons'
+import { Header } from '@/components/header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Loading } from '@/components/Loading'
 import { CardService } from '@/components/cardService'
@@ -109,7 +110,8 @@ export default function Home() {
 
     return (
         <>
-            {/* <Loading /> */}
+            <Header isHomePage={true}></Header>
+            <Loading />
             <section className="hero-banner">
                 <div className="container">
                     <div className="row">

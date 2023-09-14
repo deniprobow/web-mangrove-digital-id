@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from "@/components/breadcrumb/style"
 
@@ -14,6 +15,7 @@ export default function Mapping() {
 
     return (
         <>
+            <Header isHomePage={false} />
             <Loading />
             <Breadcrumb
                 title = "Mapping"

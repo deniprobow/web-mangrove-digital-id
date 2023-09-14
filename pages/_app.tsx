@@ -3,7 +3,6 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@/styles/scss/style.scss'
-import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 
   
@@ -57,7 +56,6 @@ function App({ Component }: AppProps) {
                 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
                 <link rel="image_src" href="/img/meta/image-meta-s.jpg" /> 
             </Head>
-            <Header />
             <Component />
             <Footer />
         </>

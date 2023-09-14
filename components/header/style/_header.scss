@@ -50,7 +50,7 @@
 
             &.active {
                 > a {
-                    color: $primary-color !important;
+                    color: $accent-color !important;
                     font-weight: 800;
                 }
             }
@@ -72,6 +72,18 @@
 }
 
 header.header {
+    &.solid {
+        .header--nav {
+            > ul {
+                > li {
+                    > a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
     &.scrolled {
         background-color: #fff;
         box-shadow: 0 10px 10px rgba(#000, .05);

@@ -2,7 +2,11 @@ import Link from "next/link"
 import { useState, useEffect } from 'react'
 import { useRouter } from "next/router"
 
-export const Header = () => {
+interface headerProps {
+    isHomePage : boolean
+}
+
+export const Header = ({isHomePage, ...props}:headerProps) => {
     const [isScrolled, setScrolled] = useState(false)
 
     const router = useRouter()
@@ -30,7 +34,7 @@ export const Header = () => {
     }, [])
 
     return (
-        <header onClick={toogleNavMobile} className={`header ${isScrolled ? 'scrolled' : ''}`}>
+        <header onClick={toogleNavMobile} className={`header ${isScrolled ? 'scrolled' : ''} ${isHomePage ? '' : 'solid'}`}>
             <div className="container">
                 <Link className="header--logo" href="/">
                     <img src="/img/logo.webp" alt="" />

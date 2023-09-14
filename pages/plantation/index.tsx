@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { Loading } from '@/components/Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
@@ -29,33 +30,27 @@ export default function Plantation() {
             label : "30.000 Pohon",
             company : "PT. Alpha Company",
             area  : "Kec. Paloh Kab.sambas",
-            image : "/img/index/bg-hero-banner.webp"
+            image : "/img/plantation-1.webp"
         },
         {
             id : 2,
             label : "50.000 Pohon",
             company : "PT. Adiyaksa Company",
             area  : "Kec. Sui Pinyuh Kab.Mempawah",
-            image : "/img/index/bg-hero-banner.webp"
+            image : "/img/plantation-2.webp"
         },
         {
             id : 3,
             label : "60.000 Pohon",
             company : "PT. Google Indonesia",
             area  : "Kec. Sui Kupah Kab.KubuRaya",
-            image : "/img/index/bg-hero-banner.webp"
-        },
-        {
-            id : 4,
-            label : "40.000 Pohon",
-            company : "PT. AWS Indonesia",
-            area  : "Kec. Sui Kupah Kab.KubuRaya",
-            image : "/img/index/bg-hero-banner.webp"
+            image : "/img/plantation-3.webp"
         }
     ]
 
     return (
         <>
+            <Header isHomePage={false} />
             <Loading />
             <Breadcrumb
                 title = "Plantation"

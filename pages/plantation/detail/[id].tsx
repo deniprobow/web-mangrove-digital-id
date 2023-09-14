@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { useRouter } from 'next/router'
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
@@ -48,6 +49,7 @@ export default function DetailPlantation() {
     
     return (
         <>
+            <Header isHomePage={false} />
             <Loading />
             <Breadcrumb
                 title = "Detail Plantation"

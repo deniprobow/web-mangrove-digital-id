@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardGallery } from '@/components/CardGallery'
@@ -69,6 +70,7 @@ export default function DetailALbum() {
 
     return (
         <>
+            <Header isHomePage={false} />
             <Loading />
             <Breadcrumb
                 title = "Photo of Album"
