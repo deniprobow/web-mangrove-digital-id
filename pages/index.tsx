@@ -76,6 +76,12 @@ export default function Home() {
         }
     ]
 
+    type dataTypeCount = {
+        icon : string,
+        label : string,
+        count : string
+    }
+
     type dataTypePlantation = {
         id : number,
         label : string,
@@ -83,6 +89,22 @@ export default function Home() {
         area  : string,
         image : string,
     }
+
+    const dataCount = [
+        {
+            icon : "/img/index/icon-ecology.webp",
+            label : "Seed Distribution",
+            count : "2M+"
+        },{
+            icon : "/img/index/icon-marker.webp",
+            label : "Place",
+            count : "13"
+        },{
+            icon : "/img/index/icon-seed.webp",
+            label : "Seed Planting",
+            count : "300K"
+        }
+    ]
 
     const dataPlantations = [
         {
@@ -116,27 +138,20 @@ export default function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 hero-banner--img order-lg-2">
-                            <div className="tile-count">
-                                <img src="/img/index/icon-ecology.webp" alt="" />
-                                <div className="tile-text">
-                                    <h2>500</h2>
-                                    <span>Donation</span>
-                                </div>
-                            </div>
-                            <div className="tile-count">
-                                <img src="/img/index/icon-marker.webp" alt="" />
-                                <div className="tile-text">
-                                    <h2>200</h2>
-                                    <span>Places</span>
-                                </div>
-                            </div>
-                            <div className="tile-count">
-                                <img src="/img/index/icon-seed.webp" alt="" />
-                                <div className="tile-text">
-                                    <h2>45M+</h2>
-                                    <span>Seed Planting</span>
-                                </div>
-                            </div>
+                            {
+                                dataCount &&
+                                dataCount.map((item:dataTypeCount) => {
+                                    return (
+                                        <div className="tile-count">
+                                            <img src={item.icon} alt="" />
+                                            <div className="tile-text">
+                                                <h2>{item.count}</h2>
+                                                <span>{item.label}</span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                             <img src="/img/index/img-hero-banner.webp" alt="" />
                         </div>
                         <div className="col-lg-6 hero-banner--text order-lg-1">
