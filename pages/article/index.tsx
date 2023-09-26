@@ -1,3 +1,4 @@
+import useSWR from 'swr'
 import { Header } from '@/components/header'
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
@@ -15,43 +16,23 @@ export default function Article() {
     ]
 
     type dataType = {
-        id : number,
-        img : string,
-        title : string,
-        caption : string,
-        date : string,
-        writer : string
+        id_article: string,
+        article_title: string,
+        article_image: string,
+        created_at: string
     }
-    
-    const datas = [
-        {
-            id : 1,
-            img : "/img/plantation-1.webp",
-            title : "The Importance of Mangroves in Coastal Ecosystems",
-            caption : "Mangroves are a vital component of coastal ecosystems worldwide, providing a wide range of ecological and economic benefits.",
-            date : "15 September 2023",
-            writer : "Surif Yandi"
-        },{
-            id : 2,
-            img : "/img/plantation-2.webp",
-            title : "Threats to Mangrove Ecosystems and Conservation Efforts",
-            caption : "Mangrove ecosystems face an array of threats that put their survival at risk. These resilient coastal forests are under constant pressure.",
-            date : "15 September 2023",
-            writer : "Surif Yandi"
-        },{
-            id : 3,
-            img : "/img/plantation-3.webp",
-            title : "Exploring the Fascinating Biodiversity of Mangrove Ecosystems",
-            caption : "Mangrove ecosystems are renowned for their extraordinary biodiversity and unique adaptations that enable life in the challenging conditions of coastal areas.",
-            date : "15 September 2023",
-            writer : "Surif Yandi"
-        }
-    ]
+
+    const fetcher = async (url:string) => fetch(url).then((res) => res.json())
+
+    const { data, error, isLoading } = useSWR('http://202.157.186.124:3031/articles', fetcher)
+
+    if(isLoading) return <Loading />
+
+    const datas = data
 
     return (
         <>
             <Header isHomePage={false} />
-            <Loading />
             <Breadcrumb
                 title = "Articles"
                 links = {breadcrumbLinks}
@@ -61,16 +42,14 @@ export default function Article() {
                     <div className="row">
                         {
                             datas &&
-                            datas.map((item:dataType)=>{
+                            datas.map((item:dataType, index)=>{
                                 return (
-                                    <div className="mb-4 col-sm-6 col-lg-4">
+                                    <div className="mb-4 col-sm-6 col-lg-4" key={index}>
                                         <CardArticle
-                                            id = {item.id}
-                                            img = {item.img}
-                                            title = {item.title}
-                                            caption = {item.caption}
-                                            date = {item.date}
-                                            writer = {item.writer}
+                                            id_article={item.id_article}
+                                            article_title={item.article_title}
+                                            article_image={item.article_image}
+                                            created_at={item.created_at}
                                         />
                                     </div>
                                 )

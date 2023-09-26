@@ -51,9 +51,6 @@ function App({ Component }: AppProps) {
                 <meta property="og:description" content="Plant Mangrove, Save The World" />
                 <meta property="og:email" content="support@mangrovedigital.id" />
                 
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-                <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
                 <link rel="image_src" href="/img/meta/image-meta-s.jpg" /> 
             </Head>
             <Component />

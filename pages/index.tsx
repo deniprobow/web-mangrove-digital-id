@@ -7,6 +7,9 @@ import { Loading } from '@/components/Loading'
 import { CardService } from '@/components/cardService'
 import { CardTestimonial } from '@/components/cardTestimonial'
 import { CardProduct } from "@/components/cardProduct"
+import { DataCounts } from '@/dataDummy/dataCounts'
+import { DataPlantations } from '@/dataDummy/dataPlantations'
+import useSWR from 'swr'
 import { useRef, useState, useEffect } from 'react'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
@@ -50,31 +53,16 @@ export default function Home() {
         ],
     }
 
-    type dataType = {
-        img : string,
-        name : string,
-        position: string,
-        testimonial : string
+    type dataTypePartners = {
+        logo_partner: string
     }
 
-    const dataTestmonials = [
-        {
-            img : '/img/index/sandiaga-uno.jpg',
-            name : 'Sandiaga Uno',
-            position: 'Menteri Pariwisata',
-            testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
-        },{
-            img : '/img/index/sandiaga-uno.jpg',
-            name : 'Sandiaga Uno',
-            position: 'Menteri Pariwisata',
-            testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
-        },{
-            img : '/img/index/sandiaga-uno.jpg',
-            name : 'Sandiaga Uno',
-            position: 'Menteri Pariwisata',
-            testimonial : 'Digital Mangrove has been an absolute game-changer for our business. Their expertise in digital marketing and web development helped us establish a strong online presence and reach our target audience effectively. Their innovative strategies and creative approach have significantly boosted our brand visibility and engagement.'
-        }
-    ]
+    type dataTypeTestimonial = {
+        nama_testimonial: string,
+        profesi_testimonial: string,
+        foto_testimonial: string,
+        isi_testimonial: string
+    }
 
     type dataTypeCount = {
         icon : string,
@@ -90,59 +78,35 @@ export default function Home() {
         image : string,
     }
 
-    const dataCount = [
-        {
-            icon : "/img/index/icon-ecology.webp",
-            label : "Seed Distribution",
-            count : "2M+"
-        },{
-            icon : "/img/index/icon-marker.webp",
-            label : "Place",
-            count : "13"
-        },{
-            icon : "/img/index/icon-seed.webp",
-            label : "Seed Planting",
-            count : "300K"
-        }
+    const urls:string[] = [
+        'http://202.157.186.124:3031/partners',
+        'http://202.157.186.124:3031/testimonials'
     ]
 
-    const dataPlantations = [
-        {
-            id : 1,
-            label : "30.000 Pohon",
-            company : "PT. Alpha Company",
-            area  : "Kec. Paloh Kab.sambas",
-            image : "/img/plantation-1.webp"
-        },
-        {
-            id : 2,
-            label : "50.000 Pohon",
-            company : "PT. Adiyaksa Company",
-            area  : "Kec. Sui Pinyuh Kab.Mempawah",
-            image : "/img/plantation-2.webp"
-        },
-        {
-            id : 3,
-            label : "60.000 Pohon",
-            company : "PT. Google Indonesia",
-            area  : "Kec. Sui Kupah Kab.KubuRaya",
-            image : "/img/plantation-3.webp"
-        }
-    ]
+    async function arrayFetcher(urlArr:string[]) {
+        const fetcher = async (url:string) => fetch(url).then((res) => res.json())
+        return await Promise.all(urlArr.map(fetcher))
+    }
+    const { data, error, isLoading }:any = useSWR(urls, arrayFetcher)
+    
+    if(isLoading) return <Loading />
+
+    const dataPartners = data[0]
+    const dataTestmonials = data[1]
 
     return (
         <>
             <Header isHomePage={true}></Header>
-            <Loading />
+
             <section className="hero-banner">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 hero-banner--img order-lg-2">
                             {
-                                dataCount &&
-                                dataCount.map((item:dataTypeCount) => {
+                                DataCounts &&
+                                DataCounts.map((item:dataTypeCount, index) => {
                                     return (
-                                        <div className="tile-count">
+                                        <div key={index} className="tile-count">
                                             <img src={item.icon} alt="" />
                                             <div className="tile-text">
                                                 <h2>{item.count}</h2>
@@ -174,11 +138,16 @@ export default function Home() {
             <section className="partner bg-grey">
                 <div className="container">
                     <ul>
-                        <li><img src="/img/index/logo-akcaya.png" height="80px" alt="" /></li>
-                        <li><img src="/img/index/logo-brgm.png" height="80px" alt="" /></li>
-                        <li><img src="/img/index/logo-kementrian-kelautan-perikanan.png" height="80px" alt="" /></li>
-                        <li><img src="/img/index/logo-kubu-raya.png" height="80px" alt="" /></li>
-                        <li><img src="/img/index/logo-mowilex.png" height="50px" alt="" /></li>
+
+                        {
+                            dataPartners.map((item:dataTypePartners, index) => {
+                                return (
+                                    <li key={index}>
+                                        <img src={item.logo_partner} height="80px" alt="" />
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
             </section>
@@ -241,7 +210,7 @@ export default function Home() {
                             <p className="mb-0">the concept of the digital mangrove serves as a captivating analogy that mirrors the intricate interplay of connectivity, diversity, adaptation, and preservation in our online world.</p>
                             <div className="testimonial--action-slider">
                                 <div className="testimonial--count-slider">
-                                    {currentIndexSlide + 1} / {totalSlide}
+                                    {currentIndexSlide + 1} / {dataTestmonials.length}
                                 </div>
                                 <div className="testimonial--nav-slider">
                                     <div className="nav-slider nav-slider__left" onClick={() => refSlide?.current?.slickPrev()}>
@@ -257,13 +226,14 @@ export default function Home() {
                             <Slider ref={refSlide} {...slickSettings}>
                                 {
                                     dataTestmonials &&
-                                    dataTestmonials.map((item:dataType) => {
+                                    dataTestmonials.map((item:dataTypeTestimonial, index) => {
                                         return (
                                             <CardTestimonial
-                                                caption = {item.testimonial}
-                                                img = {item.img}
-                                                name = {item.name}
-                                                position = {item.position}
+                                                key={index}
+                                                nama_testimonial={item.nama_testimonial}
+                                                profesi_testimonial={item.profesi_testimonial}
+                                                foto_testimonial={item.foto_testimonial}
+                                                isi_testimonial={item.isi_testimonial}
                                             />
                                         )
                                     })
@@ -283,16 +253,17 @@ export default function Home() {
                     </div>
                     <div className="row">
                         {
-                            dataPlantations &&
-                            dataPlantations.map((item:dataTypePlantation)=>{
+                            DataPlantations &&
+                            DataPlantations.map((item:dataTypePlantation, index)=>{
                                 return (
-                                    <div className="mb-4 col-lg-4">
+                                    <div key={index} className="mb-4 col-lg-4">
                                         <CardProduct 
                                             metaLabel = {item.label}
                                             title = {item.company}
                                             urlLink = {"/plantation/detail/"+item.id}
                                             metaCaption = {item.area}
                                             img = {item.image}
+                                            key = {index}
                                         />
                                     </div>
                                 )
