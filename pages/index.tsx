@@ -79,8 +79,8 @@ export default function Home() {
     }
 
     const urls:string[] = [
-        'http://202.157.186.124:3031/partners',
-        'http://202.157.186.124:3031/testimonials'
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/partners`,
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/testimonials`
     ]
 
     async function arrayFetcher(urlArr:string[]) {

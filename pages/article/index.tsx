@@ -24,7 +24,7 @@ export default function Article() {
 
     const fetcher = async (url:string) => fetch(url).then((res) => res.json())
 
-    const { data, error, isLoading } = useSWR('http://202.157.186.124:3031/articles', fetcher)
+    const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_SERVER_HOST}/articles`, fetcher)
 
     if(isLoading) return <Loading />
 
