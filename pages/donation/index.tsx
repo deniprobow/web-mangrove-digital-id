@@ -16,7 +16,6 @@ export default function Donation() {
     return (
         <>
             <Header isHomePage={false} />
-            <Loading />
             <Breadcrumb
                 title = "Donate Us"
                 links = {breadcrumbLinks}
@@ -48,6 +47,14 @@ export default function Donation() {
                                                     <label htmlFor="input phone">Phone / Whatsapp</label>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div className="form-floating mb-3">
+                                            <select className="form-select" id="inputJenisDonasi">
+                                                <option value="1">Pesan Tanam</option>
+                                                <option value="2">Pesan Bibit</option>
+                                                <option value="3">Pemeliharaan Carbon</option>
+                                            </select>
+                                            <label htmlFor="inputJenisDonasi">Pilih jenis donasi</label>
                                         </div>
                                         <div className="form-floating mb-3">
                                             <input type="text" className="form-control" id="inputLokasiPesanTanam" placeholder="Lokasi pesan tanam" />
