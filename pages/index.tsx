@@ -64,6 +64,12 @@ export default function Home() {
         isi_testimonial: string
     }
 
+    type dataTypeProduct = {
+        product_name: string,
+        product_description: string,
+        current_price: string
+    }
+
     type dataTypeCount = {
         icon : string,
         label : string,
@@ -80,7 +86,8 @@ export default function Home() {
 
     const urls:string[] = [
         `${process.env.NEXT_PUBLIC_SERVER_HOST}/partners`,
-        `${process.env.NEXT_PUBLIC_SERVER_HOST}/testimonials`
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/testimonials`,
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/products`
     ]
 
     async function arrayFetcher(urlArr:string[]) {
@@ -93,6 +100,7 @@ export default function Home() {
 
     const dataPartners = data[0]
     const dataTestmonials = data[1]
+    const dataProducts = data[2]
 
     return (
         <>
@@ -177,27 +185,20 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="row pt-3">
-                        <div className="col-lg-4 mb-4 mb-lg-0">
-                            <CardService
-                                img = "/img/index/service-1.webp"
-                                title = "Order Plantation"
-                                description= "The digital mangrove is characterized by its rich diversity of content. From blog posts to videos, podcasts to memes, it hosts a plethora of multimedia elements that cater to a wide range of interests. This dynamic environment allows creators to showcase their talents."
-                            />
-                        </div>
-                        <div className="col-lg-4 mb-4 mb-lg-0">
-                            <CardService 
-                                img = "/img/index/service-2.webp"
-                                title = "Order Seeds"
-                                description= "The digital mangrove is characterized by its rich diversity of content. From blog posts to videos, podcasts to memes, it hosts a plethora of multimedia elements that cater to a wide range of interests. This dynamic environment allows creators to showcase their talents."
-                            />
-                        </div>
-                        <div className="col-lg-4">
-                            <CardService 
-                                img = "/img/index/service-3.webp"
-                                title = "Restore Carbons"
-                                description= "Just as mangroves have evolved to thrive in harsh coastal environments, the digital mangrove demonstrates a remarkable ability to adapt. Trends come and go, platforms evolve, and user behaviors change In this ever-evolving ecosystem, content creators and digital entities must stay nimble."
-                            />
-                        </div>
+                        {
+                            dataProducts.map((item:dataTypeProduct, index:number) => {
+                                return (
+                                    <div key={index} className="col-lg-4 mb-4 mb-lg-0">
+                                        <CardService
+                                            key={index}
+                                            product_name={item.product_name}
+                                            product_description={item.product_description}
+                                            current_price={item.current_price}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </section>

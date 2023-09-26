@@ -22,8 +22,12 @@
     > span {
         font-weight: 700;
     }
+}
 
+.btn__main,
+.btn__banner {
     &:hover {
+        cursor: pointer;
         background-color: darken($primary-color, 8%);
         color: #fff;
 
