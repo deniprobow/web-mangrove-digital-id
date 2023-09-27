@@ -1,18 +1,18 @@
 interface CardPersonProps{
-    img : string,
-    name : string,
-    position: string
+    team_name : string,
+    team_jabatan : string,
+    team_photo  : string
 }
 
-export const CardPerson = ({img, name, position, ...props}: CardPersonProps) => {
+export const CardPerson = ({team_name, team_jabatan, team_photo, ...props}: CardPersonProps) => {
     return (
         <div className="card-person">
             <div className="card-person--frame-img">
-                <img src={`${img}`} alt="" />
+                <img src={team_photo} alt="" />
             </div>
             <div className="card-person--text">
-                <h4>{name}</h4>
-                <span>{position}</span>
+                <h4>{team_name}</h4>
+                <span>{team_jabatan}</span>
             </div>
         </div>
     )

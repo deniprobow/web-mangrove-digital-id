@@ -2,13 +2,13 @@ import { Header } from '@/components/header'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { CardPerson } from '@/components/cardPerson'
 import { Loading } from '@/components/Loading'
+import useSWR from 'swr'
 
 export default function About() {
     type dataType = {
-        id : number,
-        name : string,
-        position : string,
-        img  : string
+        team_name : string,
+        team_jabatan : string,
+        team_photo  : string
     }
 
     const breadcrumbLinks = [
@@ -21,43 +21,14 @@ export default function About() {
         }
     ]
 
-    const datas = [
-        {
-            id : 1,
-            name : 'Rudi Hartono',
-            position : 'Founder/CEO',
-            img : 'https://randomuser.me/api/portraits/men/97.jpg'
-        },{
-            id : 2,
-            name : 'Adi Bujangk',
-            position : 'Co Founder/COO',
-            img : 'https://randomuser.me/api/portraits/men/97.jpg'
-        },{
-            id : 3,
-            name : 'Haji Udin',
-            position : 'Co Founder/CFO',
-            img : 'https://randomuser.me/api/portraits/men/97.jpg'
-        },{
-            id : 4,
-            name : 'Veronica Cole',
-            position : 'Chief Operation Officer',
-            img : 'https://randomuser.me/api/portraits/men/97.jpg'
-        },{
-            id : 5,
-            name : 'Mohamed Krueger',
-            position : 'Chief Technology Officer',
-            img : 'https://randomuser.me/api/portraits/men/22.jpg'
-        },{
-            id : 6,
-            name : 'Mason Grimes',
-            position : 'Chief Marketing Officer',
-            img : 'https://randomuser.me/api/portraits/men/4.jpg'
-        }
-    ]
+    const fetcher = async (url:string) => fetch(url).then((res) => res.json())
+    const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_SERVER_HOST}/teams`, fetcher)
+
+    if(isLoading) return <Loading />
+
     return (
         <>
             <Header isHomePage={false} />
-            <Loading />
             <Breadcrumb
                 title = "About Us"
                 links = {breadcrumbLinks}
@@ -76,14 +47,14 @@ export default function About() {
                     <div className="row mt-5 pt-5 justify-content-center">
                         <h1 className="text-center mb-5 pb-4 h-section">Meet Our Team</h1>
                         {
-                            datas &&
-                            datas.map((item:dataType) => {
+                            data &&
+                            data.map((item:dataType, index:number) => {
                                 return (
-                                    <div className="col-sm-6 col-lg-3 mb-4">
+                                    <div key={index} className="col-sm-6 col-lg-3 mb-4">
                                         <CardPerson 
-                                            img = {item.img}
-                                            name = {item.name}
-                                            position= {item.position}
+                                            team_name={item.team_name}
+                                            team_jabatan={item.team_jabatan}
+                                            team_photo={item.team_photo}
                                         />
                                     </div>
                                 )
