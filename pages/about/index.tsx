@@ -21,7 +21,7 @@ export default function About() {
         }
     ]
 
-    const fetcher = async (url:string) => fetch(url).then((res) => res.json())
+    const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
     const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_SERVER_HOST}/teams`, fetcher)
 
     if(isLoading) return <Loading />

@@ -100,7 +100,7 @@ export default function Home() {
     ]
 
     async function arrayFetcher(urlArr:string[]) {
-        const fetcher = async (url:string) => fetch(url).then((res) => res.json())
+        const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
         return await Promise.all(urlArr.map(fetcher))
     }
     const { data, error, isLoading }:any = useSWR(urls, arrayFetcher)

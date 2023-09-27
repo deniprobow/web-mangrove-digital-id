@@ -22,13 +22,11 @@ export default function Article() {
         created_at: string
     }
 
-    const fetcher = async (url:string) => fetch(url).then((res) => res.json())
+    const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
 
     const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_SERVER_HOST}/articles`, fetcher)
 
     if(isLoading) return <Loading />
-
-    const datas = data
 
     return (
         <>
@@ -41,8 +39,8 @@ export default function Article() {
                 <div className="container">
                     <div className="row">
                         {
-                            datas &&
-                            datas.map((item:dataType, index)=>{
+                            data &&
+                            data.map((item:dataType, index:number)=>{
                                 return (
                                     <div className="mb-4 col-sm-6 col-lg-4" key={index}>
                                         <CardArticle

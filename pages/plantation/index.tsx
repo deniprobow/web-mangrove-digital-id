@@ -4,14 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import { Breadcrumb } from "@/components/breadcrumb/style"
 import { CardProduct } from "@/components/cardProduct"
+import useSWR from 'swr'
 
 export default function Plantation() {
     type dataType = {
-        id : number,
-        label : string,
-        company : string,
-        area  : string,
-        image : string,
+        id_pesan_tanam: number,
+        nama_pemesan: string,
+        lokasi_penanaman: string,
+        jumlah_tanam: number,
+        image: string
     }
 
     const breadcrumbLinks = [
@@ -24,34 +25,17 @@ export default function Plantation() {
         }
     ]
 
-    const datas = [
-        {
-            id : 1,
-            label : "30.000 Pohon",
-            company : "PT. Alpha Company",
-            area  : "Kec. Paloh Kab.sambas",
-            image : "/img/plantation-1.webp"
-        },
-        {
-            id : 2,
-            label : "50.000 Pohon",
-            company : "PT. Adiyaksa Company",
-            area  : "Kec. Sui Pinyuh Kab.Mempawah",
-            image : "/img/plantation-2.webp"
-        },
-        {
-            id : 3,
-            label : "60.000 Pohon",
-            company : "PT. Google Indonesia",
-            area  : "Kec. Sui Kupah Kab.KubuRaya",
-            image : "/img/plantation-3.webp"
-        }
-    ]
+    const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
+
+    const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams`, fetcher)
+
+    if(isLoading) return <Loading />
+
+    console.log(data)
 
     return (
         <>
             <Header isHomePage={false} />
-            <Loading />
             <Breadcrumb
                 title = "Plantation"
                 links = {breadcrumbLinks}
@@ -71,16 +55,17 @@ export default function Plantation() {
                     </div>
                     <div className="row">
                         {
-                            datas &&
-                            datas.map((item:dataType)=>{
+                            data &&
+                            data.map((item:dataType, index:number)=>{
                                 return (
-                                    <div className="mb-4 col-sm-6 col-lg-4">
+                                    <div key={index} className="mb-4 col-sm-6 col-lg-4">
                                         <CardProduct 
-                                            metaLabel = {item.label}
-                                            title = {item.company}
-                                            urlLink = {"/plantation/detail/"+item.id}
-                                            metaCaption = {item.area}
-                                            img = {item.image}
+                                            key={index}
+                                            id_pesan_tanam={item.id_pesan_tanam}
+                                            nama_pemesan={item.nama_pemesan}
+                                            lokasi_penanaman={item.lokasi_penanaman}
+                                            jumlah_tanam={item.jumlah_tanam}
+                                            image='https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/pontianakpost/2020/07/KKR-mangrove.jpg'
                                         />
                                     </div>
                                 )
