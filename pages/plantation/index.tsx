@@ -30,9 +30,6 @@ export default function Plantation() {
     const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams`, fetcher)
 
     if(isLoading) return <Loading />
-
-    console.log(data)
-
     return (
         <>
             <Header isHomePage={false} />

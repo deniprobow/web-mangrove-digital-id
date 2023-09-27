@@ -2,9 +2,24 @@ import { Header } from '@/components/header'
 import { useRouter } from 'next/router'
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
+import useSWR from 'swr'
 
 export default function DetailPlantation() {
     const router = useRouter()
+
+    function conversion(val:number) {
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    }
+
+    type dataTypeDetail = {
+        id_pesan_tanam: string,
+        nama_pemesan: string,
+        lokasi_penanaman: string,
+        koordinat_penanaman: string,
+        waktu_penanaman: string,
+        jumlah_tanam: number,
+        nilai_pembayaran: number
+    }
 
     type dataType = {
         id : number,
@@ -12,6 +27,19 @@ export default function DetailPlantation() {
         image : string,
         caption : string
     }
+
+    const urls:string[] = [
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/${router.query.id}`
+    ]
+    async function arrayFetcher(urlArr:string[]) {
+        const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
+        return await Promise.all(urlArr.map(fetcher))
+    }
+    const { data, error, isLoading }:any = useSWR(urls, arrayFetcher)
+
+    if(isLoading) return <Loading />
+
+    const dataDetail:dataTypeDetail = data[0]
 
     const breadcrumbLinks = [
         {
@@ -21,7 +49,7 @@ export default function DetailPlantation() {
             name : 'Plantation',
             url : '/plantation'
         }, {
-            name : 'Detail Plantation',
+            name : dataDetail.nama_pemesan,
             url : '/plantation/detail/' + router.query.id
         }
     ]
@@ -50,7 +78,6 @@ export default function DetailPlantation() {
     return (
         <>
             <Header isHomePage={false} />
-            <Loading />
             <Breadcrumb
                 title = "Detail Plantation"
                 links = {breadcrumbLinks}
@@ -60,9 +87,11 @@ export default function DetailPlantation() {
                     <div className="row">
                         <div className="col-lg-7 plantation-detail mb-5 mb-lg-0">
                             <div className="plantation-detail--inner">
-                                <h1 className="plantation-detail--title">PT. Alpha Company</h1>
+                                <h1 className="plantation-detail--title">{dataDetail.nama_pemesan}</h1>
                                 <ul className="plantation-detail--meta">
-                                    <li><strong>Jumlah Bibit :</strong> 5.000 bibit</li>
+                                    <li><strong>Jumlah Bibit :</strong> {conversion(dataDetail.jumlah_tanam)}</li>
+                                    <li><strong>Total Harga :</strong>  Rp. {conversion(dataDetail.nilai_pembayaran)},00</li>
+                                    <li><strong>Waktu Penanaman: </strong> {dataDetail.waktu_penanaman}</li>
                                     <li><strong>Alamat Penamaman :</strong> Kecamatan Sungai Pinyuh, Kabupaten Mempawah</li>
                                 </ul>
                                 <div className="map-google">
