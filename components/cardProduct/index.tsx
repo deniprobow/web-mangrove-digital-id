@@ -1,23 +1,23 @@
 import Link from "next/link"
 
 interface CardProductProps {
-    metaLabel : string,
-    title : string,
-    urlLink : string,
-    metaCaption : string,
-    img : string
+    id_pesan_tanam: number,
+    nama_pemesan: string,
+    lokasi_penanaman: string,
+    jumlah_tanam: number,
+    image: string
 }
 
-export const CardProduct = ({metaLabel, title, urlLink, metaCaption, img, ...props}:CardProductProps) => {
+export const CardProduct = ({id_pesan_tanam, nama_pemesan, lokasi_penanaman, jumlah_tanam, image, ...props}:CardProductProps) => {
     return (
         <div className="card-product h-100">
             <div className="card-product--frame-img">
-                <img src={`${img}`} alt="" />
+                <img src={image} alt="" />
             </div>
             <div className="card-product--text">
-                <label className="label label__main">{metaLabel}</label>
-                <Link href={`${urlLink}`}>{title}</Link>
-                <span>{metaCaption}</span>
+                <label className="label label__main">{jumlah_tanam} bibit</label>
+                <Link href={`plantation/detail/${id_pesan_tanam}`}>{nama_pemesan}</Link>
+                <span>{lokasi_penanaman}</span>
             </div>
         </div>
     )

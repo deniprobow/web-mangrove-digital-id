@@ -53,6 +53,12 @@ export default function Home() {
         ],
     }
 
+    type dataTypeCount = {
+        icon : string,
+        label : string,
+        count : string
+    }
+
     type dataTypePartners = {
         logo_partner: string
     }
@@ -70,13 +76,15 @@ export default function Home() {
         current_price: string
     }
 
-    type dataTypeCount = {
-        icon : string,
-        label : string,
-        count : string
+    type dataTypePesanTanam = {
+        id_pesan_tanam: number,
+        nama_pemesan: string,
+        lokasi_penanaman: string,
+        jumlah_tanam: number,
+        image: string
     }
 
-    type dataTypePlantation = {
+    type dataType = {
         id : number,
         label : string,
         company : string,
@@ -87,7 +95,8 @@ export default function Home() {
     const urls:string[] = [
         `${process.env.NEXT_PUBLIC_SERVER_HOST}/partners`,
         `${process.env.NEXT_PUBLIC_SERVER_HOST}/testimonials`,
-        `${process.env.NEXT_PUBLIC_SERVER_HOST}/products`
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/products`,
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams`
     ]
 
     async function arrayFetcher(urlArr:string[]) {
@@ -101,6 +110,7 @@ export default function Home() {
     const dataPartners = data[0]
     const dataTestmonials = data[1]
     const dataProducts = data[2]
+    const dataPesanTanams = data[3]
 
     return (
         <>
@@ -148,7 +158,7 @@ export default function Home() {
                     <ul>
 
                         {
-                            dataPartners.map((item:dataTypePartners, index) => {
+                            dataPartners.map((item:dataTypePartners, index:number) => {
                                 return (
                                     <li key={index}>
                                         <img src={item.logo_partner} height="80px" alt="" />
@@ -170,7 +180,7 @@ export default function Home() {
                             <h1 className="h-section">About Us & Our History</h1>
                             <p>In the vast expanse of the digital world, the concept of a "Digital Mangrove" has emerged as an intriguing analogy. Just like the intricate ecosystem of a mangrove forest that plays a pivotal role in supporting diverse marine life, the digital mangrove symbolizes the virtual spaces that foster and sustain a multitude of online activities, connections, and experiences. Let's dive into the captivating realm of the digital mangrove and uncover its significance in our modern age.</p>
                             <div className="d-block pt-4">
-                                <Link href="#" className="btn btn__main">Read More</Link>
+                                <Link href="/about" className="btn btn__main">Read More</Link>
                             </div>
                         </div>
                     </div>
@@ -227,7 +237,7 @@ export default function Home() {
                             <Slider ref={refSlide} {...slickSettings}>
                                 {
                                     dataTestmonials &&
-                                    dataTestmonials.map((item:dataTypeTestimonial, index) => {
+                                    dataTestmonials.map((item:dataTypeTestimonial, index:number) => {
                                         return (
                                             <CardTestimonial
                                                 key={index}
@@ -245,7 +255,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="download bg-grey">
+            <section className="bg-grey">
                 <div className="container">
                     <div className="row mb-5">
                         <div className="col-lg-6 offset-lg-3">
@@ -254,17 +264,17 @@ export default function Home() {
                     </div>
                     <div className="row">
                         {
-                            DataPlantations &&
-                            DataPlantations.map((item:dataTypePlantation, index)=>{
+                            dataPesanTanams &&
+                            dataPesanTanams.map((item:dataTypePesanTanam, index:number)=>{
                                 return (
                                     <div key={index} className="mb-4 col-lg-4">
                                         <CardProduct 
-                                            metaLabel = {item.label}
-                                            title = {item.company}
-                                            urlLink = {"/plantation/detail/"+item.id}
-                                            metaCaption = {item.area}
-                                            img = {item.image}
-                                            key = {index}
+                                            key={index}
+                                            id_pesan_tanam={item.id_pesan_tanam}
+                                            nama_pemesan={item.nama_pemesan}
+                                            lokasi_penanaman={item.lokasi_penanaman}
+                                            jumlah_tanam={item.jumlah_tanam}
+                                            image='https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/pontianakpost/2020/07/KKR-mangrove.jpg'
                                         />
                                     </div>
                                 )
