@@ -156,7 +156,6 @@ export default function Home() {
             <section className="partner bg-grey">
                 <div className="container">
                     <ul>
-
                         {
                             dataPartners.map((item:dataTypePartners, index:number) => {
                                 return (
@@ -203,7 +202,7 @@ export default function Home() {
                                             key={index}
                                             product_name={item.product_name}
                                             product_description={item.product_description}
-                                            current_price={item.current_price}
+                                            link='/donation'
                                         />
                                     </div>
                                 )
