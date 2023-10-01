@@ -110,7 +110,9 @@ export default function Home() {
     const dataPartners = data[0]
     const dataTestmonials = data[1]
     const dataProducts = data[2]
-    const dataPesanTanams = data[3]
+    const dataPesanTanams = data[3].reverse().slice(0, 3)
+
+    console.log(dataPesanTanams)
 
     return (
         <>
