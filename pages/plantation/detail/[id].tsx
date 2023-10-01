@@ -90,7 +90,6 @@ export default function DetailPlantation() {
                                 <h1 className="plantation-detail--title">{dataDetail.nama_pemesan}</h1>
                                 <ul className="plantation-detail--meta">
                                     <li><strong>Jumlah Bibit :</strong> {conversion(dataDetail.jumlah_tanam)}</li>
-                                    <li><strong>Total Harga :</strong>  Rp. {conversion(dataDetail.nilai_pembayaran)},00</li>
                                     <li><strong>Waktu Penanaman: </strong> {dataDetail.waktu_penanaman}</li>
                                     <li><strong>Alamat Penamaman :</strong> Kecamatan Sungai Pinyuh, Kabupaten Mempawah</li>
                                 </ul>
