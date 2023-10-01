@@ -112,8 +112,6 @@ export default function Home() {
     const dataProducts = data[2]
     const dataPesanTanams = data[3].reverse().slice(0, 3)
 
-    console.log(dataPesanTanams)
-
     return (
         <>
             <Header isHomePage={true}></Header>
