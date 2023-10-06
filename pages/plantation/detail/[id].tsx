@@ -27,13 +27,6 @@ export default function DetailPlantation() {
         keterangan_timeline_pesan_tanam: string
     }
 
-    type dataType = {
-        id : number,
-        date : string,
-        image : string,
-        caption : string
-    }
-
     const id = router.query.id
     const host:string = `${process.env.NEXT_PUBLIC_SERVER_HOST}`
 
@@ -63,27 +56,6 @@ export default function DetailPlantation() {
             name : dataDetail.nama_pemesan,
             url : '/plantation/detail/' + router.query.id
         }
-    ]
-
-    const datas = [
-        {
-            id : 1,
-            date : "28 Agustus 2023",
-            image : "/img/index/bg-hero-banner.webp",
-            caption : "Lorem ipsum dolor sit amet consetetur adipisicing elit."
-        },
-        {
-            id : 2,
-            date : "1 September 2023",
-            image : "/img/index/bg-hero-banner.webp",
-            caption : "Lorem ipsum dolor sit amet consetetur adipisicing elit."
-        },
-        {
-            id : 3,
-            date : "10 September 2023",
-            image : "/img/index/bg-hero-banner.webp",
-            caption : "Lorem ipsum dolor sit amet consetetur adipisicing elit."
-        },
     ]
     
     return (
