@@ -2,23 +2,29 @@ import { Header } from '@/components/header'
 import { useRouter } from 'next/router'
 import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
+import { FormatNumber } from '@/modules/utils/formatNumber'
+import { FormatDate } from '@/modules/utils/formatDate'
 import useSWR from 'swr'
 
 export default function DetailPlantation() {
     const router = useRouter()
 
-    function conversion(val:number) {
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-    }
-
     type dataTypeDetail = {
-        id_pesan_tanam: string,
+        id_pesan_tanam: number,
         nama_pemesan: string,
         lokasi_penanaman: string,
         koordinat_penanaman: string,
         waktu_penanaman: string,
         jumlah_tanam: number,
         nilai_pembayaran: number
+    }
+
+    type dataTypeTimeline = {
+        id_timeline_pesan_tanam: number,
+        id_pesan_tanam: number,
+        foto_timeline_pesan_tanam: string,
+        tgl_timeline_pesan_tanam: string,
+        keterangan_timeline_pesan_tanam: string
     }
 
     type dataType = {
@@ -28,8 +34,12 @@ export default function DetailPlantation() {
         caption : string
     }
 
+    const id = router.query.id
+    const host:string = `${process.env.NEXT_PUBLIC_SERVER_HOST}`
+
     const urls:string[] = [
-        `${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/${router.query.id}`
+        `${host}/pesan_tanams/${id}`,
+        `${host}/timelines/${id}`
     ]
     async function arrayFetcher(urlArr:string[]) {
         const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
@@ -40,6 +50,7 @@ export default function DetailPlantation() {
     if(isLoading) return <Loading />
 
     const dataDetail:dataTypeDetail = data[0]
+    const dataTimeline:dataTypeTimeline = data[1]
 
     const breadcrumbLinks = [
         {
@@ -89,7 +100,7 @@ export default function DetailPlantation() {
                             <div className="plantation-detail--inner">
                                 <h1 className="plantation-detail--title">{dataDetail.nama_pemesan}</h1>
                                 <ul className="plantation-detail--meta">
-                                    <li><strong>Jumlah Bibit :</strong> {conversion(dataDetail.jumlah_tanam)}</li>
+                                    <li><strong>Jumlah Bibit :</strong> {FormatNumber(dataDetail.jumlah_tanam)}</li>
                                     <li><strong>Waktu Penanaman: </strong> {dataDetail.waktu_penanaman}</li>
                                     <li><strong>Alamat Penamaman :</strong> Kecamatan Sungai Pinyuh, Kabupaten Mempawah</li>
                                 </ul>
@@ -102,13 +113,12 @@ export default function DetailPlantation() {
                             <h3 className="mb-4">Progress Penamaman Bibit</h3>
                             <ul className="timeline-progress">
                                 {
-                                    datas &&
-                                    datas.map((item:dataType) => {
+                                    dataTimeline.map((item:dataTypeTimeline, index:number) => {
                                         return (
-                                            <li>
-                                                <span className="label label__main progress--date">{item.date}</span>
-                                                <img src={`${item.image}`} alt="" />
-                                                <p>{item.caption}</p>
+                                            <li key={index}>
+                                                <span className="label label__main progress--date">{FormatDate(item.tgl_timeline_pesan_tanam)}</span>
+                                                <img src={item.foto_timeline_pesan_tanam} alt="" />
+                                                <p>{item.keterangan_timeline_pesan_tanam}</p>
                                             </li>
                                         )
                                     })
