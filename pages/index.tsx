@@ -1,4 +1,3 @@
-
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons'
 import { Header } from '@/components/header'
@@ -8,7 +7,6 @@ import { CardService } from '@/components/cardService'
 import { CardTestimonial } from '@/components/cardTestimonial'
 import { CardProduct } from "@/components/cardProduct"
 import { DataCounts } from '@/dataDummy/dataCounts'
-import { DataPlantations } from '@/dataDummy/dataPlantations'
 import useSWR from 'swr'
 import { useRef, useState, useEffect } from 'react'
 import Slider from 'react-slick'
@@ -81,7 +79,7 @@ export default function Home() {
         nama_pemesan: string,
         lokasi_penanaman: string,
         jumlah_tanam: number,
-        image: string
+        foto_penanaman: string
     }
 
     type dataType = {
@@ -155,12 +153,13 @@ export default function Home() {
 
             <section className="partner bg-grey">
                 <div className="container">
+                    <h5 className="mb-5">Mitra Penanaman</h5>
                     <ul>
                         {
                             dataPartners.map((item:dataTypePartners, index:number) => {
                                 return (
                                     <li key={index}>
-                                        <img src={item.logo_partner} height="80px" alt="" />
+                                        <img src={item.logo_partner} height="70px" alt="" />
                                     </li>
                                 )
                             })
@@ -273,7 +272,7 @@ export default function Home() {
                                             nama_pemesan={item.nama_pemesan}
                                             lokasi_penanaman={item.lokasi_penanaman}
                                             jumlah_tanam={item.jumlah_tanam}
-                                            image='https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/pontianakpost/2020/07/KKR-mangrove.jpg'
+                                            image={item.foto_penanaman}
                                         />
                                     </div>
                                 )
