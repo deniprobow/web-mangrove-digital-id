@@ -74,7 +74,7 @@ export default function DetailPlantation() {
                                 <ul className="plantation-detail--meta">
                                     <li><strong>Jumlah Bibit :</strong> {FormatNumber(dataDetail.jumlah_tanam)}</li>
                                     <li><strong>Waktu Penanaman: </strong> {dataDetail.waktu_penanaman}</li>
-                                    <li><strong>Alamat Penamaman :</strong> Kecamatan Sungai Pinyuh, Kabupaten Mempawah</li>
+                                    <li><strong>Alamat Penamaman :</strong> {dataDetail.lokasi_penanaman}</li>
                                 </ul>
                                 <div className="map-google">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31918.529806852664!2d109.36383093005371!3d-0.058708350541439414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1693154364266!5m2!1sen!2sid" width="100%" height="500" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
