@@ -12,7 +12,7 @@ export default function Plantation() {
         nama_pemesan: string,
         lokasi_penanaman: string,
         jumlah_tanam: number,
-        image: string
+        foto_penanaman: string
     }
 
     const breadcrumbLinks = [
@@ -62,7 +62,7 @@ export default function Plantation() {
                                             nama_pemesan={item.nama_pemesan}
                                             lokasi_penanaman={item.lokasi_penanaman}
                                             jumlah_tanam={item.jumlah_tanam}
-                                            image='https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/pontianakpost/2020/07/KKR-mangrove.jpg'
+                                            image={item.foto_penanaman}
                                         />
                                     </div>
                                 )

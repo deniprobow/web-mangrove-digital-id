@@ -4,6 +4,8 @@ module.exports = withImages({
     images: {
         disableStaticImages: true,
     },
+    output: 'export',
+    trailingSlash: true,
     typescript: {
         // !! WARN !!
         // Dangerously allow production builds to successfully complete even if
