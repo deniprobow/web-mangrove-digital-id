@@ -4,11 +4,51 @@ import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { FormatNumber } from '@/modules/utils/formatNumber'
 import { FormatDate } from '@/modules/utils/formatDate'
+import { GetStaticProps } from 'next'
 import useSWR from 'swr'
 
-export default function DetailPlantation() {
-    const router = useRouter()
+export async function getStaticPaths() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams`)
+    const dataPesanTanams = await res.json()
 
+    const paths = dataPesanTanams.map(dataPesantanam => ({
+        params: {
+            id: `${dataPesantanam.id_pesan_tanam}`
+        }
+    }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps = (async (context) => {
+    const { id } = context.params
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/9`)
+    const dataPesanTanam = await res.json()
+    return {
+        props: {
+            dataPesanTanam    
+        }
+    }
+})
+
+// export async function testApi() {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/9`)
+//     const dataPesanTanams = await res.json()
+//     const paths = dataPesanTanams
+
+//     console.log(paths)
+// }
+
+type DetailPlantation = {
+    dataPesantanam: object
+}
+
+export default function DetailPlantation(dataPesantanam) {
+    console.log(dataPesantanam)
+    const router = useRouter() 
     type dataTypeDetail = {
         id_pesan_tanam: number,
         nama_pemesan: string,
