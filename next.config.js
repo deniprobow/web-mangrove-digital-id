@@ -4,7 +4,7 @@ module.exports = withImages({
     images: {
         disableStaticImages: true,
     },
-    output: 'export',
+    // output: 'export',
     trailingSlash: true,
     typescript: {
         // !! WARN !!

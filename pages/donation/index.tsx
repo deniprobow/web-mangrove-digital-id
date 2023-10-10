@@ -3,7 +3,6 @@ import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { FormEvent, useEffect, useState } from 'react'
 import useSWRMutation from 'swr/mutation'
-import axios from 'axios'
 
 export default function Donation() {
     const [nama, setNama] = useState('')

@@ -6,7 +6,7 @@ import '@/styles/scss/style.scss'
 import { Footer } from '@/components/footer'
 
   
-function App({ Component }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
@@ -53,7 +53,7 @@ function App({ Component }: AppProps) {
                 
                 <link rel="image_src" href="/img/meta/image-meta-s.jpg" /> 
             </Head>
-            <Component />
+            <Component {...pageProps} />
             <Footer />
         </>
     )

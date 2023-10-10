@@ -1,17 +1,14 @@
 import { Header } from '@/components/header'
-import { useRouter } from 'next/router'
-import { Loading } from '@/components/Loading'
 import { Breadcrumb } from '@/components/breadcrumb/style'
 import { FormatNumber } from '@/modules/utils/formatNumber'
 import { FormatDate } from '@/modules/utils/formatDate'
-import { GetStaticProps } from 'next'
 import useSWR from 'swr'
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams`)
     const dataPesanTanams = await res.json()
 
-    const paths = dataPesanTanams.map(dataPesantanam => ({
+    const paths = dataPesanTanams.map((dataPesantanam: DataPesanTanam) => ({
         params: {
             id: `${dataPesantanam.id_pesan_tanam}`
         }
@@ -23,63 +20,31 @@ export async function getStaticPaths() {
     }
 }
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async (context:any) => {
     const { id } = context.params
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/9`)
-    const dataPesanTanam = await res.json()
+    const resDataPesanTanam = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/${id}`)
+    const resTimeline = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/timelines/${id}`)
+    const dataPesanTanam = await resDataPesanTanam.json()
+    const dataTimeline = await resTimeline.json()
     return {
         props: {
-            dataPesanTanam    
-        }
+            dataPesanTanam,
+            dataTimeline   
+        },
+        revalidate: 60
     }
 })
 
-// export async function testApi() {
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/9`)
-//     const dataPesanTanams = await res.json()
-//     const paths = dataPesanTanams
+type DataProps = {
+    dataPesanTanam: DataPesanTanam,
+    dataTimeline: Timeline[]
+}
 
-//     console.log(paths)
-// }
+export default function DetailPlantation({...props}: DataProps) {
+    console.log(props)
 
-export default function DetailPlantation(dataPesanTanam) {
-    console.log(dataPesanTanam)
-    const router = useRouter() 
-    type dataTypeDetail = {
-        id_pesan_tanam: number,
-        nama_pemesan: string,
-        lokasi_penanaman: string,
-        koordinat_penanaman: string,
-        waktu_penanaman: string,
-        jumlah_tanam: number,
-        nilai_pembayaran: number
-    }
-
-    type dataTypeTimeline = {
-        id_timeline_pesan_tanam: number,
-        id_pesan_tanam: number,
-        foto_timeline_pesan_tanam: string,
-        tgl_timeline_pesan_tanam: string,
-        keterangan_timeline_pesan_tanam: string
-    }
-
-    const id = router.query.id
-    const host:string = `${process.env.NEXT_PUBLIC_SERVER_HOST}`
-
-    const urls:string[] = [
-        `${host}/pesan_tanams/${id}`,
-        `${host}/timelines/${id}`
-    ]
-    async function arrayFetcher(urlArr:string[]) {
-        const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
-        return await Promise.all(urlArr.map(fetcher))
-    }
-    const { data, error, isLoading }:any = useSWR(urls, arrayFetcher)
-
-    if(isLoading) return <Loading />
-
-    const dataDetail:dataTypeDetail = data[0]
-    const dataTimeline:dataTypeTimeline = data[1]
+    const dataPesanTanam: DataPesanTanam = props.dataPesanTanam
+    const dataTimeline: Timeline[] = props.dataTimeline 
 
     const breadcrumbLinks = [
         {
@@ -89,8 +54,8 @@ export default function DetailPlantation(dataPesanTanam) {
             name : 'Plantation',
             url : '/plantation'
         }, {
-            name : dataDetail.nama_pemesan,
-            url : '/plantation/detail/' + router.query.id
+            name : dataPesanTanam.nama_pemesan,
+            url : '/plantation/detail/' + dataPesanTanam.id_pesan_tanam
         }
     ]
     
@@ -106,11 +71,11 @@ export default function DetailPlantation(dataPesanTanam) {
                     <div className="row">
                         <div className="col-lg-7 plantation-detail mb-5 mb-lg-0">
                             <div className="plantation-detail--inner">
-                                <h1 className="plantation-detail--title">{dataDetail.nama_pemesan}</h1>
+                                <h1 className="plantation-detail--title">{dataPesanTanam.nama_pemesan}</h1>
                                 <ul className="plantation-detail--meta">
-                                    <li><strong>Jumlah Bibit :</strong> {FormatNumber(dataDetail.jumlah_tanam)}</li>
-                                    <li><strong>Waktu Penanaman: </strong> {dataDetail.waktu_penanaman}</li>
-                                    <li><strong>Alamat Penamaman :</strong> {dataDetail.lokasi_penanaman}</li>
+                                    <li><strong>Jumlah Bibit :</strong> {FormatNumber(dataPesanTanam.jumlah_tanam)}</li>
+                                    <li><strong>Waktu Penanaman: </strong> {dataPesanTanam.waktu_penanaman}</li>
+                                    <li><strong>Alamat Penamaman :</strong> {dataPesanTanam.lokasi_penanaman}</li>
                                 </ul>
                                 <div className="map-google">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31918.529806852664!2d109.36383093005371!3d-0.058708350541439414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1693154364266!5m2!1sen!2sid" width="100%" height="500" allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
@@ -121,7 +86,7 @@ export default function DetailPlantation(dataPesanTanam) {
                             <h3 className="mb-4">Progress Penamaman Bibit</h3>
                             <ul className="timeline-progress">
                                 {
-                                    dataTimeline.map((item:dataTypeTimeline, index:number) => {
+                                    dataTimeline.map((item:Timeline, index:number) => {
                                         return (
                                             <li key={index}>
                                                 <span className="label label__main progress--date">{FormatDate(item.tgl_timeline_pesan_tanam)}</span>
