@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams`)
     const dataPesanTanams = await res.json()
 
-    const paths = dataPesanTanams.map(dataPesantanam => ({
+    const paths = dataPesanTanams.map((dataPesantanam:any) => ({
         params: {
             id: `${dataPesantanam.id_pesan_tanam}`
         }
@@ -23,16 +23,17 @@ export async function getStaticPaths() {
     }
 }
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = async (context:any) => {
     const { id } = context.params
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/9`)
     const dataPesanTanam = await res.json()
+    console.log("pesanTanam:"+JSON.stringify(dataPesanTanam));
     return {
         props: {
-            dataPesanTanam    
+            data:dataPesanTanam    
         }
     }
-})
+}
 
 // export async function testApi() {
 //     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_HOST}/pesan_tanams/9`)
@@ -46,8 +47,14 @@ type DetailPlantation = {
     dataPesantanam: object
 }
 
-export default function DetailPlantation(dataPesantanam) {
-    console.log(dataPesantanam)
+interface Props {
+    data?: any[],
+    callback? : React.ReactNode
+}
+
+export default function DetailPlantation({data,...props}:Props) {
+    let dataPesanTanam = (data);
+    console.log("dataProps::"+ JSON.stringify(dataPesanTanam))
     const router = useRouter() 
     type dataTypeDetail = {
         id_pesan_tanam: number,
@@ -78,12 +85,12 @@ export default function DetailPlantation(dataPesantanam) {
         const fetcher = async (url:string) => await fetch(url).then((res) => res.json())
         return await Promise.all(urlArr.map(fetcher))
     }
-    const { data, error, isLoading }:any = useSWR(urls, arrayFetcher)
+    const { data:detailData, error, isLoading }:any = useSWR(urls, arrayFetcher)
 
     if(isLoading) return <Loading />
 
-    const dataDetail:dataTypeDetail = data[0]
-    const dataTimeline:dataTypeTimeline = data[1]
+    const dataDetail:dataTypeDetail = detailData[0]
+    const dataTimeline:dataTypeTimeline = detailData[1]
 
     const breadcrumbLinks = [
         {
@@ -125,6 +132,7 @@ export default function DetailPlantation(dataPesantanam) {
                             <h3 className="mb-4">Progress Penamaman Bibit</h3>
                             <ul className="timeline-progress">
                                 {
+                                    dataTimeline &&
                                     dataTimeline.map((item:dataTypeTimeline, index:number) => {
                                         return (
                                             <li key={index}>
