@@ -42,12 +42,8 @@ export const getStaticProps = (async (context) => {
 //     console.log(paths)
 // }
 
-type DetailPlantation = {
-    dataPesantanam: object
-}
-
-export default function DetailPlantation(dataPesantanam) {
-    console.log(dataPesantanam)
+export default function DetailPlantation(dataPesanTanam) {
+    console.log(dataPesanTanam)
     const router = useRouter() 
     type dataTypeDetail = {
         id_pesan_tanam: number,
